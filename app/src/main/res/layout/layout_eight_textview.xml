@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_Railway_goods"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:gravity="center_horizontal"
+            android:text="@string/Railway_goods"/>
+
+        <TextView
+            android:id="@+id/tv_find_goods"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:gravity="center_horizontal"
+            android:text="@string/find_goods"/>
+
+        <TextView
+            android:id="@+id/tv_wood_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:gravity="center_horizontal"
+            android:text="@string/wood_info"/>
+
+        <TextView
+            android:id="@+id/tv_volume_calculate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:gravity="center_horizontal"
+            android:text="@string/volume_calculate"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_unsold_market"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:gravity="center_horizontal"
+            android:text="@string/unsold_market"/>
+
+        <TextView
+            android:id="@+id/tv_wood_find"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:gravity="center_horizontal"
+            android:text="@string/wood_find"/>
+
+        <TextView
+            android:id="@+id/tv_nice_shops"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:gravity="center_horizontal"
+            android:text="@string/nice_shops"/>
+
+        <TextView
+            android:id="@+id/tv_more_functions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:gravity="center_horizontal"
+            android:text="@string/more_functions"/>
+
+    </LinearLayout>
+</LinearLayout>

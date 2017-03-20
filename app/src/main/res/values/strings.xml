@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">WoodPersons</string>
+
+    <string name="main_home">首页</string>
+    <string name="main_published">上传发布</string >
+    <string name="main_mine">我的</string>
+
+    <!--首页上面8个按钮-->
+    <string name="Railway_goods">铁路到货</string>
+    <string name="find_goods">智能找货</string>
+    <string name="wood_info">木材咨讯</string>
+    <string name="volume_calculate">材积计算</string>
+    <string name="unsold_market">未售市场</string>
+    <string name="wood_find">木材求购</string>
+    <string name="nice_shops">精品店铺</string>
+    <string name="more_functions">更多功能</string>
+
+    <string name="text_nzh">满洲里</string>
+    <string name="text_erenhot">二连浩特</string>
+    <string name="text_suifenhe">绥芬河</string>
+
+
+    <string name="check_more">查看更多</string>
+
+
+
 </resources>
