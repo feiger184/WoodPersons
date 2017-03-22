@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="45dp"
+              android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:weightSum="5"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/time"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12:57"/>
-        <TextView
-            android:id="@+id/train"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="#000"
-            android:text="第04列"/>
-        <TextView
-            android:id="@+id/total"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="到货56车"/>
-        <TextView
-            android:id="@+id/raw_wood"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="原木26"/>
-        <TextView
-            android:id="@+id/board_wood"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="板材30"/>
-    </LinearLayout>
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="12:57"/>
+
+    <TextView
+        android:id="@+id/train"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="第04列"
+        android:textColor="#000"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="到货56车"/>
+
+    <TextView
+        android:id="@+id/raw_wood"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="原木26"/>
+
+    <TextView
+        android:id="@+id/board_wood"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="板材30"/>
+
 
 </LinearLayout>

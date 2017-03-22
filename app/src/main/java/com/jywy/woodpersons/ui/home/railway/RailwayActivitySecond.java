@@ -1,6 +1,7 @@
 package com.jywy.woodpersons.ui.home.railway;
 
 import android.content.Intent;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -8,9 +9,10 @@ import android.widget.TextView;
 import com.jywy.woodpersons.R;
 import com.jywy.woodpersons.base.BaseActivity;
 import com.jywy.woodpersons.base.PtrWrapper;
+import com.jywy.woodpersons.base.wrapper.ToolbarWrapper;
 import com.jywy.woodpersons.commons.ActivityUtils;
 import com.jywy.woodpersons.network.WoodPersonsClient;
-import com.jywy.woodpersons.network.entity.RailwayGoods; 
+import com.jywy.woodpersons.network.entity.RailwayGoods;
 import com.jywy.woodpersons.network.entity.RailwayGoodsRsp;
 
 
@@ -31,6 +33,13 @@ public class RailwayActivitySecond extends BaseActivity {
     List<TextView> mTvOrderList;
     @BindView(R.id.list_goods)
     ListView mGoodsListView;
+
+    @BindView(R.id.standard_toolbar)
+    Toolbar toolbar;
+
+    @BindView(R.id.standard_toolbar_title)
+    TextView toolbarText;
+
     private ActivityUtils activityUtils;
     private PtrWrapper ptrWrapper;
     private RailwayActivitySecondAdapter railwayListAdapter;
@@ -46,9 +55,13 @@ public class RailwayActivitySecond extends BaseActivity {
 
     @Override
     protected void initView() {
+        //设置toolbar
+        new ToolbarWrapper(this).setShowBack(true);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+        toolbarText.setText("到货列表——满洲里");
         activityUtils = new ActivityUtils(this);
         mTvOrderList.get(0).setActivated(true);
-
 
         // 刷新加载
         ptrWrapper = new PtrWrapper(this, false) {
@@ -107,7 +120,7 @@ public class RailwayActivitySecond extends BaseActivity {
 
         switch (view.getId()) {
             case R.id.line_show:
-                 searchGoods(true);
+                searchGoods(true);
                 break;
             case R.id.place_show:
                 searchGoods(true);
@@ -127,7 +140,7 @@ public class RailwayActivitySecond extends BaseActivity {
     // 网络请求获取数据
     private void searchGoods(final boolean isRefresh) {
         // 请求
-        Call<RailwayGoodsRsp> rspCall = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayData(1,8);
+        Call<RailwayGoodsRsp> rspCall = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayData(1, 8);
         rspCall.enqueue(new Callback<RailwayGoodsRsp>() {
             @Override
             public void onResponse(Call<RailwayGoodsRsp> call, Response<RailwayGoodsRsp> response) {

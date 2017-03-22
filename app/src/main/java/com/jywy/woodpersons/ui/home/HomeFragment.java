@@ -1,16 +1,12 @@
 package com.jywy.woodpersons.ui.home;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.jywy.woodpersons.R;
 import com.jywy.woodpersons.base.BaseFragment;
+import com.jywy.woodpersons.base.wrapper.ToolbarWrapper;
 import com.jywy.woodpersons.commons.ActivityUtils;
 import com.jywy.woodpersons.ui.home.railway.RailwayActivity;
 
@@ -48,6 +44,10 @@ public class HomeFragment extends BaseFragment {
         * 初始化视图
         * */
     protected void initView() {
+
+        //初始化toolbar
+        new ToolbarWrapper(this).setCustomTitle(R.string.main_home);
+
         activityUtils = new ActivityUtils(this);
         //显示图片的集合
         images = new ArrayList<ImageView>();

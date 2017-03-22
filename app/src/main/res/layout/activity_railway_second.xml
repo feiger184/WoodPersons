@@ -6,10 +6,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include
+        layout="@layout/partial_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <LinearLayout
+        android:layout_marginTop="@dimen/size_18"
         android:id="@+id/radio_show"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/size_45"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="2">
@@ -17,8 +23,9 @@
         <TextView
             android:id="@+id/line_show"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_margin="5dp"
             android:background="#2E9AF5"
             android:button="@null"
             android:gravity="center"
@@ -28,10 +35,11 @@
         <TextView
             android:id="@+id/place_show"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#BDEAFF"
             android:button="@null"
+            android:layout_margin="5dp"
             android:gravity="center"
             android:text="按位置显示"
             android:textColor="#fff"
@@ -44,11 +52,11 @@
         android:id="@id/standard_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ListView
             android:id="@+id/list_goods"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="@null"
             android:dividerHeight="1dp"
             android:scrollbars="none"/>
     </in.srain.cube.views.ptr.PtrFrameLayout>

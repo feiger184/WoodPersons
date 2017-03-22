@@ -1,40 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_railway"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/partial_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <LinearLayout
+        android:layout_marginTop="@dimen/size_18"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:weightSum="3"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="3">
+
         <TextView
             android:id="@+id/tv_text_nzh"
-            android:layout_weight="1"
-            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:drawableTop="@drawable/nzh"
+            android:gravity="center"
             android:text="@string/text_nzh"/>
+
         <TextView
             android:id="@+id/tv_text_erenhot"
-            android:layout_weight="1"
-            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:drawableTop="@drawable/erenhot"
+            android:gravity="center"
             android:text="@string/text_erenhot"/>
+
         <TextView
             android:id="@+id/tv_text_suifenhe"
-            android:layout_weight="1"
-            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:drawableTop="@drawable/suifenhe"
+            android:gravity="center"
             android:text="绥芬河"/>
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

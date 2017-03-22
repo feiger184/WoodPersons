@@ -3,12 +3,15 @@ package com.jywy.woodpersons.ui.home.railway;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.jywy.woodpersons.R;
 import com.jywy.woodpersons.base.BaseActivity;
 import com.jywy.woodpersons.base.PtrWrapper;
+import com.jywy.woodpersons.base.wrapper.ToolbarWrapper;
 import com.jywy.woodpersons.commons.ActivityUtils;
 import com.jywy.woodpersons.network.WoodPersonsClient;
 import com.jywy.woodpersons.network.entity.RailwayGoodsListRsp;
@@ -21,12 +24,21 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.jywy.woodpersons.R.id.standard_toolbar;
 
 
 public class RailwayTrainListActivity extends BaseActivity {
 
     @BindView(R.id.list_train_goods)
     ListView trainListView;
+
+    @BindView(R.id.standard_toolbar)
+    Toolbar toolbar;
+
+    @BindView(R.id.standard_toolbar_title)
+    TextView toolbarText;
+
+
 
     private ActivityUtils activityUtils;
     private PtrWrapper ptrWrapper;
@@ -54,11 +66,16 @@ public class RailwayTrainListActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+
+        new ToolbarWrapper(this)
+                .setShowBack(true);
+        setSupportActionBar(toolbar);
+       getSupportActionBar().setTitle("");
         activityUtils = new ActivityUtils(this);
         // 取出传递的数据
         timeDate = getIntent().getStringExtra(TIME_DATE);
         train = getIntent().getStringExtra(TRAIN);
-
+        toolbarText.setText("满洲里第"+train+"列到货列表");
         // 刷新加载
         ptrWrapper = new PtrWrapper(this, false) {
             @Override
@@ -86,7 +103,6 @@ public class RailwayTrainListActivity extends BaseActivity {
         RailwayGoodsListRsp.DataBean dataBean = dataX.get(position);
         String cdkey = dataBean.getCdkey();
         Intent intent = RailwayGoodsInfoActivity.getStartIntent(RailwayTrainListActivity.this, cdkey);
-
         startActivity(intent);
     }
 

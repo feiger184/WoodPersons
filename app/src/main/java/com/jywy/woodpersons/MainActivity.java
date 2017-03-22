@@ -1,10 +1,7 @@
 package com.jywy.woodpersons;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,7 +10,6 @@ import com.jywy.woodpersons.ui.home.HomeFragment;
 import com.jywy.woodpersons.ui.me.MeFragment;
 import com.jywy.woodpersons.ui.publish.PublishedFragment;
 
-import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.OnClick;
 
