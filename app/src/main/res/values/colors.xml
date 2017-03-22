@@ -17,7 +17,9 @@
     <color name="pink">#F06CA7</color>
     <color name="brown">#847534</color>
 
-    <color name="railway_top_tab_color">#000</color>
-    <color name="railway_top_tab_color_2">#ffffff</color>
+    <color name="railway_top_tab_textcolor">#000</color>
+    <color name="railway_top_tab_bacgroudcolor">#2E9AF5</color>
+    <color name="railway_top_tab_textcolor_2">#ffffff</color>
+    <color name="railway_top_tab_bacgroudcolor_2">#BDEAFF</color>
 
 </resources>

@@ -51,14 +51,14 @@ public abstract class BaseFragment extends Fragment {
                  BaseFragment.this.onBusinessResponse(apiInterface.getPath(), isSucces, responseEntity);
              }
          };
-         return EShopClient.getInstance().enqueue(apiInterface, uiCallback, getClass().getSimpleName());
+         return WoodPersonsClient.getInstance().enqueue(apiInterface, uiCallback, getClass().getSimpleName());
      }
      protected abstract void onBusinessResponse(String path,boolean isSucces, ResponseEntity responseEntity);
  */
     @Override
     public void onDestroy() {
         super.onDestroy();
-//        EShopClient.getInstance().CancelByTag(getClass().getSimpleName());
+//        WoodPersonsClient.getInstance().CancelByTag(getClass().getSimpleName());
         unbinder.unbind();
         unbinder = null;
     }

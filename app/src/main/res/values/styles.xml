@@ -21,4 +21,25 @@
         <item name="android:textSize">@dimen/font_huge</item>
     </style>
 
+
+    <style name="ContentText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="ContentText.FixedSmall">
+        <item name="android:textSize">@dimen/font_small_fixed</item>
+    </style>
+
+    <style name="ContentText.Small">
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
+    <style name="ContentText.Normal">
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="ContentText.Large">
+        <item name="android:textSize">@dimen/font_large</item>
+    </style>
+
 </resources>

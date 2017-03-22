@@ -18,10 +18,12 @@ public class HomeViewPagerAdapter extends PagerAdapter {
 
     private List<ImageView> pictureList = new ArrayList<>();
 
-    public HomeViewPagerAdapter(List<ImageView> pictureList) {
-        this.pictureList = pictureList;
-    }
 
+    public void setImageToAdapter(List<ImageView> pictureList) {
+
+        this.pictureList = pictureList;
+        notifyDataSetChanged();
+    }
     @Override
     public int getCount() {
         return pictureList.size();

@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">WoodPersons</string>
+    <string name="app_name">口岸木材人</string>
 
     <string name="main_home">首页</string>
-    <string name="main_published">上传发布</string >
+    <string name="main_published">上传发布</string>
     <string name="main_mine">我的</string>
 
     <!--首页上面8个按钮-->
@@ -23,5 +23,5 @@
     <string name="check_more">查看更多</string>
 
 
-
+    <string name="error_network">网络错误, 请检查网络设置</string>
 </resources>

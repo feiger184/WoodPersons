@@ -1,6 +1,7 @@
 package com.jywy.woodpersons.ui.home.railway;
 
-import android.content.Intent;
+import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -8,7 +9,10 @@ import com.jywy.woodpersons.R;
 import com.jywy.woodpersons.base.BaseActivity;
 import com.jywy.woodpersons.commons.ActivityUtils;
 
+
 import butterknife.BindView;
+import butterknife.OnClick;
+
 
 public class RailwayActivity extends BaseActivity {
 
@@ -24,12 +28,24 @@ public class RailwayActivity extends BaseActivity {
     @Override
     protected void initView() {
         activityUtils = new ActivityUtils(this);
-        tvNzh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+
+    }
+
+    @OnClick({R.id.tv_text_nzh, R.id.tv_text_erenhot, R.id.tv_text_suifenhe})
+    public void onclick(View view) {
+        switch (view.getId()) {
+            case R.id.tv_text_nzh:
+                Log.e("==================", "onclick: " );
                 activityUtils.startActivity(RailwayActivitySecond.class);
-            }
-        });
+
+                break;
+
+            case R.id.tv_text_erenhot:
+                break;
+
+            case R.id.tv_text_suifenhe:
+                break;
+        }
     }
 }
 

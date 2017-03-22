@@ -9,14 +9,8 @@
         android:id="@+id/layout_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/linearlayout">
+        android:layout_above="@+id/linearlayout"/>
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/main_viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/linearlayout"
@@ -60,6 +54,5 @@
             android:gravity="center"
             android:text="我的"
             android:textSize="15sp"/>
-
     </LinearLayout>
 </RelativeLayout>
