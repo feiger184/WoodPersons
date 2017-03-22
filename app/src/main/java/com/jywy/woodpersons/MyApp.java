@@ -8,6 +8,8 @@ import com.jywy.woodpersons.commons.LogUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.jpush.android.api.JPushInterface;
+
 import static okhttp3.internal.Internal.instance;
 
 /**
@@ -20,6 +22,10 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
 
+        //极光推送调试模式
+        JPushInterface.setDebugMode(true);
+        //极光推送初始化
+        JPushInterface.init(this);
     }
 
 

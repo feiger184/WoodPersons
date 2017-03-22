@@ -6,6 +6,7 @@ import android.widget.TextView;
 import com.jywy.woodpersons.R;
 import com.jywy.woodpersons.base.BaseListAdapter;
 import com.jywy.woodpersons.network.entity.RailwayGoodsList;
+import com.jywy.woodpersons.network.entity.RailwayGoodsListRsp;
 
 import butterknife.BindView;
 
@@ -13,7 +14,7 @@ import butterknife.BindView;
  * Created by 高 on 2017/3/22.
  */
 
-public class RailwayTrainListAdapter extends BaseListAdapter<RailwayGoodsList,RailwayTrainListAdapter.MyViewHolder> {
+public class RailwayTrainListAdapter extends BaseListAdapter<RailwayGoodsListRsp.DataBean,RailwayTrainListAdapter.MyViewHolder> {
 
 
     @Override
@@ -48,11 +49,11 @@ public class RailwayTrainListAdapter extends BaseListAdapter<RailwayGoodsList,Ra
 
         @Override
         protected void bind(int position) {
-            tv_train_num.setText(getItem(position).getCarNum());
-            tv_length.setText(getItem(position).getKindName());
-            tv_tree.setText(getItem(position).getStuffName());
-            tv_guige.setText(getItem(position).getGuiGe());
-            tv_phone_num.setText(getItem(position).getContactPhone());
+            tv_train_num.setText(getItem(position).getCarnum());
+            tv_length.setText(getItem(position).getLenname());
+            tv_tree.setText(getItem(position).getStuffname());
+            tv_guige.setText(getItem(position).getKindname());
+            tv_phone_num.setText(getItem(position).getContactphone());
         }
     }
 

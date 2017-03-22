@@ -1,5 +1,6 @@
 package com.jywy.woodpersons.ui.home.railway;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -9,7 +10,7 @@ import com.jywy.woodpersons.base.BaseActivity;
 import com.jywy.woodpersons.base.PtrWrapper;
 import com.jywy.woodpersons.commons.ActivityUtils;
 import com.jywy.woodpersons.network.WoodPersonsClient;
-import com.jywy.woodpersons.network.entity.RailwayGoods;
+import com.jywy.woodpersons.network.entity.RailwayGoods; 
 import com.jywy.woodpersons.network.entity.RailwayGoodsRsp;
 
 
@@ -35,6 +36,7 @@ public class RailwayActivitySecond extends BaseActivity {
     private RailwayActivitySecondAdapter railwayListAdapter;
     private long mLastRefreshTime;
     private RailwayPlaceAdapter railwayPlaceAdapter;
+    private List<RailwayGoods> railwayGoodsesData;
 
 
     @Override
@@ -79,6 +81,11 @@ public class RailwayActivitySecond extends BaseActivity {
     public void goodsItemClick(int position) {
 
         // 跳转到详情页
+        String trainDate = railwayGoodsesData.get(position).getTrainDate();
+        String trainNum = railwayGoodsesData.get(position).getTrainNum();
+
+        Intent intent = RailwayTrainListActivity.getStartIntent(RailwayActivitySecond.this, trainNum, trainDate);
+        startActivity(intent);
 
     }
 
@@ -120,13 +127,13 @@ public class RailwayActivitySecond extends BaseActivity {
     // 网络请求获取数据
     private void searchGoods(final boolean isRefresh) {
         // 请求
-        Call<RailwayGoodsRsp> rspCall = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayData(1, 8);
+        Call<RailwayGoodsRsp> rspCall = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayData(1,8);
         rspCall.enqueue(new Callback<RailwayGoodsRsp>() {
             @Override
             public void onResponse(Call<RailwayGoodsRsp> call, Response<RailwayGoodsRsp> response) {
                 if (response.isSuccessful()) {
                     RailwayGoodsRsp body = response.body();
-                    List<RailwayGoods> railwayGoodsesData = body.getRailwayGoodsesData();
+                    railwayGoodsesData = body.getRailwayGoodsesData();
 
                     if (isRefresh) {
                         railwayPlaceAdapter.clear();

@@ -1,6 +1,7 @@
 package com.jywy.woodpersons.network.core;
 
 import com.jywy.woodpersons.network.WoodPersonsClient;
+import com.jywy.woodpersons.network.entity.RailwayGoodsInfoRsp;
 import com.jywy.woodpersons.network.entity.RailwayGoodsListRsp;
 import com.jywy.woodpersons.network.entity.RailwayGoodsRsp;
 
@@ -22,6 +23,13 @@ public class WoodPersonsApiTest {
     @Test
     public void getRailwayGoodsList() throws Exception {
         Call<RailwayGoodsListRsp> railwayGoodsList = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayGoodsList(1, 1, "03", "2017-02-21", 8);
+        railwayGoodsList.execute();
+        assertTrue(true);
+
+    }
+    @Test
+    public void getRailwayGoodsInfo() throws Exception {
+        Call<RailwayGoodsInfoRsp> railwayGoodsList = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayGoodsInfo("1334704115117021920190140133199381",8);
         railwayGoodsList.execute();
         assertTrue(true);
 
