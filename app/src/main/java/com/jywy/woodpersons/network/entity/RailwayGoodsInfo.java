@@ -10,6 +10,15 @@ import java.util.List;
 
 public class RailwayGoodsInfo {
 
+    @SerializedName("product")
+    private RailwayProductInfo productInfo;
+
+    @SerializedName("spec")
+    private List<RailwayProductSpec> productSpec;
+
+    @SerializedName("agent")
+    private RailwayProductAgent productAgent;
+
 
     public RailwayProductInfo getProductInfo() {
         return productInfo;
@@ -27,37 +36,11 @@ public class RailwayGoodsInfo {
         this.productSpec = productSpec;
     }
 
-    @SerializedName("product")
-    private RailwayProductInfo productInfo;
-
-    @SerializedName("spec")  //1条
-    private List<RailwayProductSpec> productSpec;
-
-
-    private List<List<AgentBean>> agent;
-
-    public List<List<AgentBean>> getAgent() {
-        return agent;
+    public RailwayProductAgent getProductAgent() {
+        return productAgent;
     }
 
-    public void setAgent(List<List<AgentBean>> agent) {
-        this.agent = agent;
-    }
-
-    public static class AgentBean {
-        /**
-         * hostphone : 187****0111
-         */
-
-        @SerializedName("hostphone")
-        private String hostPhone;
-
-        public String getHostPhone() {
-            return hostPhone;
-        }
-
-        public void setHostPhone(String hostPhone) {
-            this.hostPhone = hostPhone;
-        }
+    public void setProductAgent(RailwayProductAgent productAgent) {
+        this.productAgent = productAgent;
     }
 }

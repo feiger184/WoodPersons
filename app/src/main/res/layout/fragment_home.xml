@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
               xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
 
@@ -22,8 +22,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/white"/>
+
+
     </FrameLayout>
 
+    <com.jywy.woodpersons.base.SimpleSearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_36"
+        android:layout_marginBottom="1dp"
+        android:layout_marginRight="14dp"
+        android:gravity="center"/>
     <!--8个按钮-->
     <include
         layout="@layout/layout_eight_textview"
@@ -36,12 +45,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:drawableLeft="@mipmap/ic_launcher"
-        android:gravity="center_vertical"
         android:ellipsize="marquee"
-        android:singleLine="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
         android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
         android:text="跑马灯  跑马灯  跑马灯   跑马灯   跑马灯   跑马灯   跑马灯   跑马灯"/>
 
     <!--未售市场-->
@@ -82,9 +91,9 @@
         </LinearLayout>
 
         <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/unsold_RecyclerView"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"/>-->
+        <!--android:id="@+id/unsold_RecyclerView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
 
         <Button
             android:layout_width="wrap_content"
@@ -122,9 +131,9 @@
         </LinearLayout>
 
         <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/woodfind_RecyclerView"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"/>-->
+        <!--android:id="@+id/woodfind_RecyclerView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
 
         <Button
             android:layout_width="wrap_content"

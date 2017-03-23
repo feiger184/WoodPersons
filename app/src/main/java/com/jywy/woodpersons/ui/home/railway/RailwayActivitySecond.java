@@ -46,6 +46,7 @@ public class RailwayActivitySecond extends BaseActivity {
     private long mLastRefreshTime;
     private RailwayPlaceAdapter railwayPlaceAdapter;
     private List<RailwayGoods> railwayGoodsesData;
+    private Call<RailwayGoodsRsp> rspCall;
 
 
     @Override
@@ -70,13 +71,10 @@ public class RailwayActivitySecond extends BaseActivity {
                 // 要进行网络请求获取数据
                 searchGoods(true);
             }
-
             @Override
             protected void onLoadMore() {
 
             }
-
-
         };
 
         // 处理ListView:设置适配器
@@ -92,7 +90,7 @@ public class RailwayActivitySecond extends BaseActivity {
 
     @OnItemClick(R.id.list_goods)
     public void goodsItemClick(int position) {
-
+        rspCall.cancel();
         // 跳转到详情页
         String trainDate = railwayGoodsesData.get(position).getTrainDate();
         String trainNum = railwayGoodsesData.get(position).getTrainNum();
@@ -123,7 +121,7 @@ public class RailwayActivitySecond extends BaseActivity {
                 searchGoods(true);
                 break;
             case R.id.place_show:
-                searchGoods(true);
+                activityUtils.showToast("待实现。。。");
                 break;
 
             default:
@@ -139,8 +137,17 @@ public class RailwayActivitySecond extends BaseActivity {
 
     // 网络请求获取数据
     private void searchGoods(final boolean isRefresh) {
+
+
+        if (isRefresh) {
+            mLastRefreshTime = System.currentTimeMillis();
+
+        }
+        if (rspCall != null) {
+            rspCall.cancel();
+        }
         // 请求
-        Call<RailwayGoodsRsp> rspCall = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayData(1, 8);
+        rspCall = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayData(1, 8);
         rspCall.enqueue(new Callback<RailwayGoodsRsp>() {
             @Override
             public void onResponse(Call<RailwayGoodsRsp> call, Response<RailwayGoodsRsp> response) {
@@ -152,10 +159,6 @@ public class RailwayActivitySecond extends BaseActivity {
                         railwayPlaceAdapter.clear();
                         mGoodsListView.setAdapter(railwayListAdapter);
                         railwayListAdapter.reset(railwayGoodsesData);
-                    } else {
-                        railwayListAdapter.clear();
-                        mGoodsListView.setAdapter(railwayPlaceAdapter);
-                        railwayPlaceAdapter.reset(railwayGoodsesData);
                     }
 
                 }
@@ -171,5 +174,11 @@ public class RailwayActivitySecond extends BaseActivity {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        rspCall.cancel();
+        rspCall = null;
+    }
 
 }

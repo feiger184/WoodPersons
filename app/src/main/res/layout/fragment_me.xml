@@ -4,8 +4,13 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/recyclerViewList"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="未实现"
+        android:background="@drawable/meitu2"
+        android:textSize="23sp"/>
+
 </LinearLayout>

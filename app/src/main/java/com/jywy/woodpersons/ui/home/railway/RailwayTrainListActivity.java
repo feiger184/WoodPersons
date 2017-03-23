@@ -5,9 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.jywy.woodpersons.MainActivity;
 import com.jywy.woodpersons.R;
 import com.jywy.woodpersons.base.BaseActivity;
 import com.jywy.woodpersons.base.PtrWrapper;
@@ -49,6 +52,7 @@ public class RailwayTrainListActivity extends BaseActivity {
     private String timeDate;
     private String train;
     private List<RailwayGoodsListRsp.DataBean> dataX;
+    private Call<RailwayGoodsListRsp> trainCall;
 
 
     // 因为需要传递数据，为了规范我们传递的数据内容，所以我们在此页面对外提供一个跳转的方法
@@ -98,6 +102,8 @@ public class RailwayTrainListActivity extends BaseActivity {
 
     }
 
+
+
     @OnItemClick(R.id.list_train_goods)
     public void GoToGoodsInfo(int position) {
         RailwayGoodsListRsp.DataBean dataBean = dataX.get(position);
@@ -110,7 +116,7 @@ public class RailwayTrainListActivity extends BaseActivity {
     // 网络请求获取数据
     private void searchTrain(final boolean isRefresh) {
 
-        Call<RailwayGoodsListRsp> trainCall = WoodPersonsClient.getInstance().getWoodPersonsApi()
+        trainCall = WoodPersonsClient.getInstance().getWoodPersonsApi()
                 .getRailwayGoodsList(1, 1, train, timeDate, 8);
         trainCall.enqueue(new Callback<RailwayGoodsListRsp>() {
 
@@ -140,4 +146,10 @@ public class RailwayTrainListActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        trainCall.cancel();
+        trainCall = null;
+    }
 }

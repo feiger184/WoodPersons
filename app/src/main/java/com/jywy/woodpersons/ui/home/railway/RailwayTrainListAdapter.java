@@ -52,7 +52,13 @@ public class RailwayTrainListAdapter extends BaseListAdapter<RailwayGoodsListRsp
             tv_train_num.setText(getItem(position).getCarnum());
             tv_length.setText(getItem(position).getLenname());
             tv_tree.setText(getItem(position).getStuffname());
-            tv_guige.setText(getItem(position).getKindname());
+            String guige = getItem(position).getGuige();
+            if (guige.isEmpty()) {
+                tv_guige.setText(getItem(position).getKindname());
+            } else {
+                tv_guige.setText(getItem(position).getGuige());
+            }
+
             tv_phone_num.setText(getItem(position).getContactphone());
         }
     }

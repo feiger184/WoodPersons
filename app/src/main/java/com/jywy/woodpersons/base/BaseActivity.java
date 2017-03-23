@@ -3,11 +3,16 @@ package com.jywy.woodpersons.base;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.view.Menu;
+import android.view.MenuItem;
 
-import com.jywy.woodpersons.MyApp;
+import com.jywy.woodpersons.MainActivity;
+import com.jywy.woodpersons.R;
+import com.jywy.woodpersons.commons.ActivityUtils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+
 
 /**
  * Created by 高 on 2017/3/20.
@@ -16,12 +21,14 @@ import butterknife.Unbinder;
 public abstract class BaseActivity extends TransitionActivity {
 
     private Unbinder unbinder;
+    private ActivityUtils activityUtils;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentViewLayout());
         unbinder = ButterKnife.bind(this);
+        activityUtils = new ActivityUtils(this);
 
 //        //用于网络监测
 //        if(!NetUtils.isConnected(BaseActivity.this)){
@@ -42,13 +49,28 @@ public abstract class BaseActivity extends TransitionActivity {
         initView();
     }
 
+    //右上角按钮
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.layout_menu_home, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.menu_home) {
+            activityUtils.startActivity(MainActivity.class);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     protected abstract void initView();
 
     //让子类告诉我们布局
     @LayoutRes
     protected abstract int getContentViewLayout();
-
 
 
     @Override

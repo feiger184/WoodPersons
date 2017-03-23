@@ -1,5 +1,6 @@
 package com.jywy.woodpersons.ui.home.railway;
 
+
 import android.view.View;
 import android.widget.TextView;
 
@@ -7,11 +8,14 @@ import com.jywy.woodpersons.R;
 import com.jywy.woodpersons.base.BaseActivity;
 import com.jywy.woodpersons.base.wrapper.ToolbarWrapper;
 import com.jywy.woodpersons.commons.ActivityUtils;
+import com.jywy.woodpersons.network.WoodPersonsClient;
+import com.jywy.woodpersons.network.entity.RailwayGoodsInfoRsp;
 
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
+import retrofit2.Call;
 
 public class RailwayActivity extends BaseActivity {
 
@@ -42,7 +46,12 @@ public class RailwayActivity extends BaseActivity {
                 activityUtils.startActivity(RailwayActivitySecond.class);
                 break;
             case R.id.tv_text_erenhot:
-                activityUtils.showToast("待实现。。。");
+                Call<RailwayGoodsInfoRsp> railwayGoodsInfo = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayGoodsInfo("1334704115117021920190140133199381", 8);
+                try {
+                    railwayGoodsInfo.execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
 
             case R.id.tv_text_suifenhe:

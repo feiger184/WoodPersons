@@ -2,8 +2,9 @@
     <string name="app_name">口岸木材人</string>
 
     <string name="main_home">首页</string>
-    <string name="main_published">上传发布</string>
-    <string name="main_mine">我的</string>
+    <string name="main_message">首页</string>
+    <string name="main_published">发布</string>
+    <string name="main_mine">我</string>
 
     <!--首页上面8个按钮-->
     <string name="Railway_goods">铁路到货</string>
@@ -19,8 +20,11 @@
     <string name="text_erenhot">二连浩特</string>
     <string name="text_suifenhe">绥芬河</string>
 
+    <string name="toolbar_text">详细信息</string>
+
 
     <string name="check_more">查看更多</string>
+    <string name="search_hint">请输入车皮号/手机号</string>
 
 
     <string name="error_network">网络错误, 请检查网络设置</string>
