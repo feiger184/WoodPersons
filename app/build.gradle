@@ -69,4 +69,7 @@ dependencies {
     compile 'cn.jiguang.sdk:jpush:3.0.3'  // 此处以JPush 3.0.3 版本为例。
     compile 'cn.jiguang.sdk:jcore:1.1.1'  // 此处以JCore 1.1.1 版本为例。
 
+    //百分比适配
+    compile 'com.android.support:percent:22.2.0'
+
 }

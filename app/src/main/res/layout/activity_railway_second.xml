@@ -22,42 +22,44 @@
 
         <TextView
             android:id="@+id/line_show"
-            android:layout_width="wrap_content"
+            android:layout_width="146dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="5dp"
-            android:background="#2E9AF5"
+            android:drawableBottom="@drawable/railway_xhx"
+            android:drawablePadding="5dp"
             android:button="@null"
             android:gravity="center"
             android:text="按列显示"
-            android:textSize="20sp"/>
+            android:textColor="#51C85E"
+            android:textSize="20sp"
+            android:layout_weight="0.16"/>
 
         <TextView
             android:id="@+id/place_show"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#BDEAFF"
             android:button="@null"
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="按位置显示"
-            android:textColor="#fff"
             android:textSize="20sp"/>
+
     </LinearLayout>
 
 
     <!--第三方控件：刷新加载-->
+    <ListView
+        android:id="@+id/list_goods"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:dividerHeight="1dp"
+        android:scrollbars="none"/>
+
     <in.srain.cube.views.ptr.PtrFrameLayout
         android:id="@id/standard_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ListView
-            android:id="@+id/list_goods"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:dividerHeight="1dp"
-            android:scrollbars="none"/>
     </in.srain.cube.views.ptr.PtrFrameLayout>
 </LinearLayout>

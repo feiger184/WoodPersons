@@ -1,24 +1,20 @@
 package com.jywy.woodpersons;
 
 import android.app.Notification;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jywy.woodpersons.base.BaseActivity;
+import com.jywy.woodpersons.soft_update.UnpdateMessage;
 import com.jywy.woodpersons.ui.home.HomeFragment;
 import com.jywy.woodpersons.ui.me.MeFragment;
 import com.jywy.woodpersons.ui.message.MessageFragment;
 import com.jywy.woodpersons.ui.publish.PublishedFragment;
 
 import butterknife.BindViews;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import cn.jpush.android.api.BasicPushNotificationBuilder;
 import cn.jpush.android.api.JPushInterface;
 
@@ -33,6 +29,7 @@ public class MainActivity extends BaseActivity {
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
 
+    UnpdateMessage mUnpdateMessage;
 
     @Override
     protected int getContentViewLayout() {
@@ -62,10 +59,44 @@ public class MainActivity extends BaseActivity {
 
         transaction.replace(R.id.layout_container,new HomeFragment());
         transaction.commit();
+
+        //版本升级
+//        unpdate();
     }
 
+    //APP版本升级
+    private void unpdate() {
+        int localityAPK=getAppCode();//当前的PK信息
+        if (2>localityAPK){
+            mUnpdateMessage=new UnpdateMessage(this);
+            mUnpdateMessage.checkUpdateInfo();
+        }else {
+            Toast.makeText(this,"欢迎使用",Toast.LENGTH_LONG).show();
+        }
+    }
 
-
+    //获取软件版本号（code）
+    private int getAppCode(){
+        int versionCode=-1;
+        try {
+            String pkName=this.getPackageName();
+            versionCode=this.getPackageManager().getPackageInfo(pkName,0).versionCode;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return versionCode;
+    }
+    //获取软件版本名称
+    private String getAppInfo(){
+        String pkName=this.getPackageName();
+        try {
+            String versionName=this.getPackageManager().getPackageInfo(pkName,0).versionName;
+            return versionName;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @OnClick({R.id.tv_home,R.id.tv_message, R.id.tv_published, R.id.tv_me})
     public void onClick(TextView view) {
@@ -104,18 +135,8 @@ public class MainActivity extends BaseActivity {
     * */
     @Override
     public void onBackPressed() {
-        if (!isExit) {
-            isExit = true;
-            Toast.makeText(this, "再摁一次退出程序", Toast.LENGTH_SHORT).show();
-//            viewpager.postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    isExit = false;
-//                }
-//            }, 2000);
-        } else {
+
             finish();
-        }
 
     }
 

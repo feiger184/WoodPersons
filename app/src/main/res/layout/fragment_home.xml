@@ -34,10 +34,10 @@
         android:layout_marginRight="14dp"
         android:gravity="center"/>
     <!--8个按钮-->
-    <include
-        layout="@layout/layout_eight_textview"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"/>
+    <!--<include-->
+        <!--layout="@layout/layout_eight_textview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="200dp"/>-->
 
     <TextView
         android:id="@+id/tvM"

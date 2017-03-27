@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.percent.PercentRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_railway"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <include
         layout="@layout/partial_action_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:text="境外码单上传"
+        android:background="@drawable/shape_unsold"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="@dimen/font_20"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="80%"
+        android:layout_marginBottom="22dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
 
     <LinearLayout
-        android:layout_marginTop="@dimen/size_18"
+        android:id="@+id/ll_railway"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="3"
+        android:layout_marginLeft="@dimen/size_18"
+        android:layout_marginRight="@dimen/size_18"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true">
 
         <TextView
             android:id="@+id/tv_text_nzh"
@@ -26,7 +44,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/nzh"
+            android:drawablePadding="@dimen/size_10"
             android:gravity="center"
+            android:textSize="@dimen/font_huge"
+            android:textColor="#000"
             android:text="@string/text_nzh"/>
 
         <TextView
@@ -35,7 +56,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/erenhot"
+            android:drawablePadding="@dimen/size_10"
             android:gravity="center"
+            android:textSize="@dimen/font_huge"
+            android:textColor="#000"
             android:text="@string/text_erenhot"/>
 
         <TextView
@@ -44,7 +68,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/suifenhe"
+            android:drawablePadding="@dimen/size_10"
             android:gravity="center"
+            android:textSize="@dimen/font_huge"
+            android:textColor="#000"
             android:text="绥芬河"/>
+
     </LinearLayout>
-</LinearLayout>
+</android.support.percent.PercentRelativeLayout>
