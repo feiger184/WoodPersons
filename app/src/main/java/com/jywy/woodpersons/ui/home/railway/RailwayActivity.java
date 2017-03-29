@@ -46,12 +46,8 @@ public class RailwayActivity extends BaseActivity {
                 activityUtils.startActivity(RailwayActivitySecond.class);
                 break;
             case R.id.tv_text_erenhot:
-                Call<RailwayGoodsInfoRsp> railwayGoodsInfo = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayGoodsInfo("1334704115117021920190140133199381", 8);
-                try {
-                    railwayGoodsInfo.execute();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                activityUtils.showToast("待实现。。。");
+
                 break;
 
             case R.id.tv_text_suifenhe:

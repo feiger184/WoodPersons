@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="3"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:orientation="horizontal">
         <LinearLayout
@@ -52,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="18sp"
+                android:textColor="#000"
                 android:text="常宇货场"/>
         </LinearLayout>
         <View
@@ -71,6 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="18sp"
+                android:textColor="#000"
                 android:text="常宇货场"/>
         </LinearLayout>
         <View
@@ -90,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="18sp"
+                android:textColor="#000"
                 android:text="常宇货场"/>
         </LinearLayout>
 
@@ -103,6 +106,7 @@
         android:layout_marginBottom="15dp"
         android:orientation="horizontal">
         <TextView
+            android:id="@+id/tv_wood_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -116,6 +120,7 @@
             android:layout_height="match_parent"
             android:background="#ccc"/>
         <TextView
+            android:id="@+id/tv_wood_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -129,6 +134,7 @@
             android:layout_height="match_parent"
             android:background="#ccc"/>
         <TextView
+            android:id="@+id/tv_wood_freight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -142,6 +148,7 @@
             android:layout_height="match_parent"
             android:background="#ccc"/>
         <TextView
+            android:id="@+id/tv_wood_recommend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -173,8 +180,8 @@
                 android:layout_centerVertical="true"/>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/wood_empty"
                 android:layout_centerVertical="true"
@@ -199,8 +206,8 @@
                 android:layout_centerVertical="true"/>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:background="@drawable/wood_job"
                 android:layout_marginRight="5dp"
                 android:layout_centerVertical="true"
@@ -231,8 +238,8 @@
                 android:layout_centerVertical="true"/>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:background="@drawable/wood_order"
                 android:layout_marginRight="5dp"
                 android:layout_centerVertical="true"
@@ -257,8 +264,8 @@
                 android:layout_centerVertical="true"/>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:background="@drawable/wood_rent_out"
                 android:layout_marginRight="5dp"
                 android:layout_centerVertical="true"

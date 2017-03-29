@@ -15,6 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class WoodPersonsClient {
 
     public static final String BASE_URL = "http://dev.sxuav.com/index.php/Mcrapp/Index/";
+    public static final String BASE_IMG = "http://mcr123.oss-cn-beijing.aliyuncs.com/";
 
 
     private static WoodPersonsClient woodPersonsClient;

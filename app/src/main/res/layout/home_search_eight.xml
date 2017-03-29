@@ -7,8 +7,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:background="@drawable/shape_home_eight"
             android:orientation="vertical">
 
@@ -29,6 +29,7 @@
                     android:layout_height="40dip"
                     android:hint="请输入车皮号/手机号"
                     android:background="@null"
+                    android:textSize="16sp"
                     android:inputType="text"
                     android:imeOptions="actionSearch"
                     android:cursorVisible="false"
@@ -50,6 +51,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableTop="@drawable/home_railway"
+                    android:drawablePadding="15dp"
+                    android:textColor="#000"
                     android:text="@string/Railway_goods"/>
                 <TextView
                     android:id="@+id/tv_home_offer"
@@ -58,6 +61,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableTop="@drawable/home_offer"
+                    android:drawablePadding="15dp"
+                    android:textColor="#000"
                     android:text="看报价"/>
                 <TextView
                     android:id="@+id/tv_home_order"
@@ -66,6 +71,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableTop="@drawable/home_order"
+                    android:drawablePadding="15dp"
+                    android:textColor="#000"
                     android:text="我要订货"/>
                 <TextView
                     android:id="@+id/tv_home_boutique"
@@ -74,6 +81,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableTop="@drawable/home_boutique"
+                    android:drawablePadding="15dp"
+                    android:textColor="#000"
                     android:text="付费精品"/>
             </LinearLayout>
             <!--二层-->
@@ -90,6 +99,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableTop="@drawable/home_store"
+                    android:drawablePadding="15dp"
+                    android:textColor="#000"
                     android:text="品牌店铺"/>
                 <TextView
                     android:id="@+id/tv_home_unsold"
@@ -98,6 +109,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableTop="@drawable/home_unsold"
+                    android:drawablePadding="15dp"
+                    android:textColor="#000"
                     android:text="未售"/>
                 <TextView
                     android:id="@+id/tv_home_buy"
@@ -106,6 +119,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableTop="@drawable/home_buy"
+                    android:drawablePadding="15dp"
+                    android:textColor="#000"
                     android:text="求购"/>
                 <TextView
                     android:id="@+id/tv_home_more"
@@ -114,6 +129,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableTop="@drawable/home_more"
+                    android:drawablePadding="15dp"
+                    android:textColor="#000"
                     android:text="更多"/>
             </LinearLayout>
         </LinearLayout>
@@ -122,17 +139,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
             <TextView
+                android:id="@+id/tv_parities"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/parities"
-                android:textSize="18dp"
+                android:drawablePadding="5dp"
+                android:textSize="15dp"
                 android:textColor="#000"
                 android:gravity="center"
                 android:text="汇率："/>
-            <TextView
+
+            <com.jywy.woodpersons.base.MarqueTextView
                 android:id="@+id/tvM"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -143,8 +163,7 @@
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:marqueeRepeatLimit="marquee_forever"
-                android:textSize="13dp"
-                android:text="1欧元=7.4360RMB  1美元=6.8890RMB  1欧元=7.4360RMB  1美元=6.8890RMB   1欧元=7.4360RMB  1美元=6.8890RMB   1欧元=7.4360RMB  1美元=6.8890RMB"/>
+                android:textSize="13dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

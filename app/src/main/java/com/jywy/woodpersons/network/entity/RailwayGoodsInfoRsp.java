@@ -21,9 +21,9 @@ public class RailwayGoodsInfoRsp extends ResponseEntity {
     "agent": {
       "host": [
            {
-         "hostphone": "137****3739"
-          },
-       {
+               "hostphone": "137****3739"
+             },
+         {
         "hostphone": "137****3111"
       },
       {
