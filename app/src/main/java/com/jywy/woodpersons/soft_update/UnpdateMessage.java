@@ -34,13 +34,13 @@ public class UnpdateMessage {
     private String updateMsg = "有最新的软件包哦，亲快下载吧~";
 
     // 返回你需要安装的安装包url
-    private String apkUrl = "";//下载路径
+    private String apkUrl = "http://dev.sxuav.com/Public/apk/mcr.apk";//下载路径
     //显示框
     private Dialog noticeDialog;
     //显示进度框
     private Dialog downloadDialog;
     /* （服务器）下载包安装路径 */
-    private static final String savePath = "/sdcard/updatedemo/";
+    public static final String savePath = "/sdcard/updatedemo/";
     //服务器安装包文件夹名
     private static final String saveFileName = savePath
             + "UpdateDemoRelease.apk";

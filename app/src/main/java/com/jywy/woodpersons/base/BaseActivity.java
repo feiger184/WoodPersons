@@ -22,10 +22,12 @@ public abstract class BaseActivity extends TransitionActivity {
 
     private Unbinder unbinder;
     private ActivityUtils activityUtils;
+//    private Window mWindow;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        init();
         setContentView(getContentViewLayout());
         unbinder = ButterKnife.bind(this);
         activityUtils = new ActivityUtils(this);
@@ -49,6 +51,18 @@ public abstract class BaseActivity extends TransitionActivity {
         initView();
     }
 
+//    private void init() {
+//        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            mWindow = getWindow();
+//            mWindow.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            mWindow.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            mWindow.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//            mWindow.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            mWindow.setStatusBarColor(Color.TRANSPARENT);
+//            mWindow.setNavigationBarColor(Color.TRANSPARENT);
+//        }
+//    }
     //右上角按钮
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,9 +75,12 @@ public abstract class BaseActivity extends TransitionActivity {
 
         if (item.getItemId() == R.id.menu_home) {
             activityUtils.startActivity(MainActivity.class);
-            return true;
+
         }
-        return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return false;
     }
 
     protected abstract void initView();

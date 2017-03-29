@@ -14,7 +14,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 // 网络请求的客户端
 public class WoodPersonsClient {
 
-    public static final String BASE_URL = "http://dev.sxuav.com/index.php/Mcrapp/Index/";
+    public static final String BASE_URL = "http://dev.sxuav.com/index.php/Mcrapp/";
+    public static final String BASE_IMG = "http://mcr123.oss-cn-beijing.aliyuncs.com/";
 
 
     private static WoodPersonsClient woodPersonsClient;

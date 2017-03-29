@@ -1,268 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-        <!--未售板块 unsold-->
-        <RelativeLayout
-        android:paddingTop="30dp"
+
+    <RelativeLayout
+        android:paddingTop="40dp"
         android:paddingBottom="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:textColor="#000"
-                android:textSize="20sp"
-                android:text="未售"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#ccc"
-                android:textSize="15sp"
-                android:text="更多"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"/>
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#ccc"/>
-        <!--一层-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:weightSum="2"
-            android:orientation="horizontal">
-            <!--左上-->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/wood_unsold"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:weightSum="2"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        android:textSize="15sp"
-                        android:text="落叶松 4米 38*175"
-                        android:layout_weight="0.75"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/shape_unsold"
-                        android:textSize="16sp"
-                        android:layout_marginLeft="3dp"
-                        android:textColor="#fff"
-                        android:text="  混  "/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/location"
-                        android:drawablePadding="5dp"
-                        android:gravity="center_vertical"
-                        android:text="满洲里"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="13722006660"/>
-                </LinearLayout>
-            </LinearLayout>
-            <View
-                android:layout_width="10dp"
-                android:layout_height="match_parent"/>
-            <!--右上-->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/wood_unsold"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:weightSum="2"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        android:textSize="15sp"
-                        android:text="落叶松 4米 38*175"
-                        android:layout_weight="0.75"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/shape_unsold"
-                        android:textSize="16sp"
-                        android:layout_marginLeft="3dp"
-                        android:textColor="#fff"
-                        android:text="  混  "/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/location"
-                        android:drawablePadding="5dp"
-                        android:gravity="center_vertical"
-                        android:text="满洲里"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="13722006660"/>
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-        <!--二层-->
-        <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:weightSum="2"
-        android:orientation="horizontal">
-        <!--左下-->
-            <LinearLayout
+        android:gravity="center_vertical">
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/wood_unsold"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000"
-                    android:textSize="15sp"
-                    android:text="落叶松 4米 38*175"
-                    android:layout_weight="0.75"/>
+            android:layout_alignParentLeft="true"
+            android:text="未售"
+            android:textColor="#000"
+            android:textSize="20sp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape_unsold"
-                    android:textSize="16sp"
-                    android:layout_marginLeft="3dp"
-                    android:textColor="#fff"
-                    android:text="  混  "/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/location"
-                    android:drawablePadding="5dp"
-                    android:gravity="center_vertical"
-                    android:text="满洲里"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="13722006660"/>
-            </LinearLayout>
-        </LinearLayout>
-            <View
-            android:layout_width="10dp"
-            android:layout_height="match_parent"/>
-        <!--右下-->
-            <LinearLayout
+        <TextView
+            android:id="@+id/tv_more_unsold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/wood_unsold"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:text="更多"
+            android:textSize="15sp"/>
+    </RelativeLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000"
-                    android:textSize="15sp"
-                    android:text="落叶松 4米 38*175"
-                    android:layout_weight="0.75"/>
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="#ccc"/>-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape_unsold"
-                    android:textSize="16sp"
-                    android:layout_marginLeft="3dp"
-                    android:textColor="#fff"
-                    android:text="  混  "/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/location"
-                    android:drawablePadding="5dp"
-                    android:gravity="center_vertical"
-                    android:text="满洲里"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="13722006660"/>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginRight="-5dp"
+        android:scrollbars="none"/>
 
 
 </LinearLayout>

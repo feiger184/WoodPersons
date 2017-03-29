@@ -18,9 +18,8 @@ public class RailwayProductAgent {
     @SerializedName("host")
     private List<RailwayProductAgentHostBean> hostBean;
 
-
-    @SerializedName("agent")
-    private RailwayProductAgentBean agentBean;
+    @SerializedName("agenttel")
+    private List<RailwayProductAgentBean> agentBean;
 
 
     public List<RailwayProductAgentHostBean> getHostBean() {
@@ -31,11 +30,11 @@ public class RailwayProductAgent {
         this.hostBean = hostBean;
     }
 
-    public RailwayProductAgentBean getAgentBean() {
+    public List<RailwayProductAgentBean> getAgentBean() {
         return agentBean;
     }
 
-    public void setAgentBean(RailwayProductAgentBean agentBean) {
+    public void setAgentBean(List<RailwayProductAgentBean> agentBean) {
         this.agentBean = agentBean;
     }
 

@@ -20,51 +20,52 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#ccc"
             android:textSize="15sp"
             android:text="更多"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"/>
     </RelativeLayout>
-        <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="20dp"
-        android:background="#ccc"/>
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:layout_marginBottom="20dp"-->
+        <!--android:background="#ccc"/>-->
         <!--第一层-->
-        <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/shape_liuyan"
+            android:background="@drawable/shape_store"
             android:orientation="vertical">
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/qg_wood_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="15sp"
-                    android:textColor="#000"
-                    android:text="樟子松 6米 原木"/>
 
                 <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="27dp"
+                    android:layout_gravity="top"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/wood_buy"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"/>
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/wood_buy"/>
-            </LinearLayout>
+                    android:textSize="15sp"
+                    android:textColor="#000"
+                    android:text="樟子松  6米  原木"
+                    android:layout_marginStart="8dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"/>
+            </RelativeLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -108,31 +109,34 @@
             android:background="#fff"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/shape_liuyan"
+            android:background="@drawable/shape_store"
             android:orientation="vertical">
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="27dp"
+                    android:layout_gravity="top"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/wood_buy"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:textSize="15sp"
                     android:textColor="#000"
-                    android:text="樟子松 6米 原木"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/wood_buy"/>
-            </LinearLayout>
+                    android:text="樟子松  6米  原木"
+                    android:layout_marginStart="8dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"/>
+            </RelativeLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -184,29 +188,32 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/shape_liuyan"
+            android:background="@drawable/shape_store"
             android:orientation="vertical">
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="27dp"
+                    android:layout_gravity="top"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/wood_buy"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:textSize="15sp"
                     android:textColor="#000"
-                    android:text="樟子松 6米 原木"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/wood_buy"/>
-            </LinearLayout>
+                    android:text="樟子松  6米  原木"
+                    android:layout_marginStart="8dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"/>
+            </RelativeLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -252,29 +259,32 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/shape_liuyan"
+            android:background="@drawable/shape_store"
             android:orientation="vertical">
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="27dp"
+                    android:layout_gravity="top"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/wood_buy"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:textSize="15sp"
                     android:textColor="#000"
-                    android:text="樟子松 6米 原木"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/wood_buy"/>
-            </LinearLayout>
+                    android:text="樟子松  6米  原木"
+                    android:layout_marginStart="8dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"/>
+            </RelativeLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
+              android:background="#ffffffff"
               android:layout_height="match_parent">
 
     <ScrollView
@@ -15,7 +16,7 @@
             android:orientation="vertical">
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="210dp"
                 android:layout_marginBottom="-50dp"
                 android:background="@drawable/find_car"/>
 
@@ -25,6 +26,7 @@
                 android:paddingBottom="20dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
+                android:clipChildren="false"
                 android:orientation="vertical">
 
                 <!--搜索框+8个按钮  search_eight-->
@@ -56,9 +58,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
-
-
 
     </ScrollView>
 
