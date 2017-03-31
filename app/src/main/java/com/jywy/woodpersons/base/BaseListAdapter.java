@@ -18,34 +18,37 @@ import butterknife.ButterKnife;
 
 /**
  * 适配器的基类
- *
+ * <p>
  * 1. 数据不一样
  * 2. item的布局不一样，ViewHolder
  * 不确定的内容可以用泛型来表示
  * <T>数据源
  * <V> ViewHolder
  */
-public abstract class BaseListAdapter<T,V extends BaseListAdapter.ViewHolder> extends BaseAdapter {
+public abstract class BaseListAdapter<T, V extends BaseListAdapter.ViewHolder> extends BaseAdapter {
 
     private List<T> mDataSet = new ArrayList<>();
 
     // 数据重置
-    public void reset(List<T> dataSet){
+    public void reset(List<T> dataSet) {
         mDataSet.clear();
-        if (dataSet!=null)mDataSet.addAll(dataSet);
+        if (dataSet != null) mDataSet.addAll(dataSet);
         notifyDataSetChanged();
     }
 
     // 数据添加
-    public void addAll(List<T> dataSet){
-        if (dataSet!=null) mDataSet.addAll(dataSet);
+    public void addAll(List<T> dataSet) {
+        if (dataSet != null) mDataSet.addAll(dataSet);
         notifyDataSetChanged();
     }
+
     // 数据添加
-    public void clear(){
-        if (mDataSet!=null) mDataSet.clear();
+    public void clear() {
+        if (mDataSet != null) mDataSet.clear();
         notifyDataSetChanged();
     }
+
+
     @Override
     public int getCount() {
         return mDataSet.size();
@@ -65,8 +68,8 @@ public abstract class BaseListAdapter<T,V extends BaseListAdapter.ViewHolder> ex
     public View getView(int position, View convertView, ViewGroup parent) {
 
         ViewHolder viewHolder = null;
-        if (convertView==null){
-            convertView = LayoutInflater.from(parent.getContext()).inflate(getItemViewLayout(),parent,false);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(parent.getContext()).inflate(getItemViewLayout(), parent, false);
             convertView.setTag(getItemViewHolder(convertView));
         }
         viewHolder = (ViewHolder) convertView.getTag();
@@ -79,14 +82,15 @@ public abstract class BaseListAdapter<T,V extends BaseListAdapter.ViewHolder> ex
 
     @LayoutRes
     protected abstract int getItemViewLayout();
+
     protected abstract V getItemViewHolder(View view);
 
-    public abstract class ViewHolder{
+    public abstract class ViewHolder {
 
         View mItemView;
 
         public ViewHolder(View itemView) {
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
             mItemView = itemView;
         }
 
@@ -94,7 +98,7 @@ public abstract class BaseListAdapter<T,V extends BaseListAdapter.ViewHolder> ex
         protected abstract void bind(int position);
 
         // 提供一个可以直接拿到上下文的方法
-        protected final Context getContext(){
+        protected final Context getContext() {
             return mItemView.getContext();
         }
     }
