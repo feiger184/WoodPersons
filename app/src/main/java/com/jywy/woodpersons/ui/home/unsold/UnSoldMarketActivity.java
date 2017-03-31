@@ -5,12 +5,20 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.PopupMenu;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jywy.woodpersons.R;
 import com.jywy.woodpersons.base.BaseActivity;
@@ -29,6 +37,7 @@ import com.jywy.woodpersons.network.entity.UnSoldMarketRsp;
 import com.jywy.woodpersons.network.entity.UnSoldMarketStuff;
 import com.jywy.woodpersons.ui.home.railway.RailwayGoodsInfoActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -44,10 +53,11 @@ public class UnSoldMarketActivity extends BaseActivity {
 
     @BindViews({R.id.tv_unsold_place, R.id.tv_unsold_goods, R.id.tv_unsold_tree, R.id.tv_unsold_more})
     TextView[] textViews;
-
     @BindView(R.id.list_unsold_goods)
     ListView listUnsoldGoods;
 
+    @BindView(R.id.tab_linear)
+    LinearLayout tablayout;
     @BindView(R.id.tv_error_text)
     TextView tv_ErrorText;
 
@@ -63,9 +73,21 @@ public class UnSoldMarketActivity extends BaseActivity {
     private int stuffid;//树种
     private int productlen;//长度
     private int pagenum;//当前页
+    int wide = 0;
+    int wideMax = 0;
+    int thinckness = 0;
+    int thincknessMax = 0;
+    int diamterlen = 0;
+    int diamterlenMax = 0;
     private UnSoldMarketAdapter unSoldMarketAdapter;
     private Call<UnSoldMarketRsp> unSoldMarketRspCall;
     private List<UnSoldMarket> unSoldMarkets;
+    private PopupWindow mPopup;
+    private MyGridAdapter adapter;
+    private List<String> portList = new ArrayList<>();
+    private List<String> kindList = new ArrayList<>();
+    private List<String> stuffidList = new ArrayList<>();
+    private List<String> lengthList = new ArrayList<>();
 
 
     private Handler handler = new Handler() {
@@ -78,6 +100,8 @@ public class UnSoldMarketActivity extends BaseActivity {
                 unSoldMarketKind = unSoldMarketList.getUnSoldMarketKind();
                 unSoldMarketStuff = unSoldMarketList.getUnSoldMarketStuff();
                 unSoldMarketLength = unSoldMarketList.getUnSoldMarketLength();
+                addDataToList(); //将Tab数据放入集合中
+
             }
             if (msg.what == 2) {
                 UnSoldMarketRsp body = (UnSoldMarketRsp) msg.obj;
@@ -90,6 +114,8 @@ public class UnSoldMarketActivity extends BaseActivity {
 
             }
         }
+
+
     };
 
 
@@ -128,7 +154,32 @@ public class UnSoldMarketActivity extends BaseActivity {
         // 自动刷新
         ptrWrapper.postRefreshDelayed(50);
 
+
     }
+
+
+    /*
+    * 将Tab数据放入集合中
+    * */
+    private void addDataToList() {
+        for (UnSoldMarketPort sdf : unSoldMarketPort) {
+            String portName = sdf.getPortName();
+            portList.add(portName);
+        }
+        for (UnSoldMarketKind sdf : unSoldMarketKind) {
+            String kindName = sdf.getKindName();
+            kindList.add(kindName);
+        }
+        for (UnSoldMarketStuff sdf : unSoldMarketStuff) {
+            String stuffName = sdf.getStuffName();
+            stuffidList.add(stuffName);
+        }
+        for (UnSoldMarketLength sdf : unSoldMarketLength) {
+            String lenName = sdf.getLenName();
+            lengthList.add(lenName);
+        }
+    }
+
 
     //加载listview数据
     private void LoadData(final boolean isRefresh) {
@@ -136,7 +187,11 @@ public class UnSoldMarketActivity extends BaseActivity {
         if (unSoldMarketRspCall != null) {
             unSoldMarketRspCall.cancel();
         }
-        unSoldMarketRspCall = WoodPersonsClient.getInstance().getWoodPersonsApi().getUnSoldMarket(portId, kindid, stuffid, productlen, pagenum, 8);
+
+        unSoldMarketRspCall = WoodPersonsClient.getInstance().getWoodPersonsApi()
+                .getUnSoldMarket(portId, kindid, stuffid, productlen, pagenum, 8,
+                        wide, wideMax, thinckness, thincknessMax, diamterlen,
+                        diamterlenMax);
         unSoldMarketRspCall.enqueue(new Callback<UnSoldMarketRsp>() {
             @Override
             public void onResponse(Call<UnSoldMarketRsp> call, Response<UnSoldMarketRsp> response) {
@@ -177,24 +232,56 @@ public class UnSoldMarketActivity extends BaseActivity {
 
     @OnClick({R.id.tv_unsold_place, R.id.tv_unsold_goods, R.id.tv_unsold_tree, R.id.tv_unsold_more})
     public void clickChange(View view) {
+
         switch (view.getId()) {
             case R.id.tv_unsold_place:
-                showPopupMenu(view, 0);
+
+                showPopupWindow(0);
+                if (mPopup.isShowing()) {
+                    // 隐藏窗口，如果设置了点击窗口外小时即不需要此方式隐藏
+                    mPopup.dismiss();
+                } else {
+                    // 显示窗口
+                    mPopup.showAsDropDown(tablayout);
+                }
                 currentView = 0;
                 break;
             case R.id.tv_unsold_goods:
-                showPopupMenu(view, 1);
+                showPopupWindow(1);
+                if (mPopup.isShowing()) {
+                    // 隐藏窗口，如果设置了点击窗口外小时即不需要此方式隐藏
+                    mPopup.dismiss();
+                } else {
+                    // 显示窗口
+                    mPopup.showAsDropDown(tablayout);
+                }
                 currentView = 1;
+
                 break;
             case R.id.tv_unsold_tree:
-                showPopupMenu(view, 2);
+                showPopupWindow(2);
+                if (mPopup.isShowing()) {
+                    // 隐藏窗口，如果设置了点击窗口外小时即不需要此方式隐藏
+                    mPopup.dismiss();
+                } else {
+                    // 显示窗口
+                    mPopup.showAsDropDown(tablayout);
+                }
                 currentView = 2;
                 break;
             case R.id.tv_unsold_more:
-                showPopupMenu(view, 3);
+                showPopupWindow(3);
+                if (mPopup.isShowing()) {
+                    // 隐藏窗口，如果设置了点击窗口外小时即不需要此方式隐藏
+                    mPopup.dismiss();
+                } else {
+                    // 显示窗口
+                    mPopup.showAsDropDown(tablayout);
+                }
                 currentView = 3;
                 break;
         }
+
 
     }
 
@@ -225,86 +312,174 @@ public class UnSoldMarketActivity extends BaseActivity {
         });
     }
 
-    public void showPopupMenu(View view, int index) {
 
-        PopupMenu popupMenu = new PopupMenu(this, view);
+    public void showPopupWindow(int currentView) {
 
-        //给PopupMenu填充本地Menu
-        popupMenu.inflate(R.menu.unsold_groups);
-        popupMenu.setOnMenuItemClickListener(menuItemListener);
+        View inflate = LayoutInflater.from(this).inflate(R.layout.layout_unsold_tab, null);
+        RecyclerView recyclerviewTab = (RecyclerView) inflate.findViewById(R.id.recyclerview_unsold_tab);
+        final TextView leghtlay = (TextView) inflate.findViewById(R.id.lengthlayout);
+        LinearLayout widthHeight = (LinearLayout) inflate.findViewById(R.id.tv_width_height);
+        final LinearLayout jingJi = (LinearLayout) inflate.findViewById(R.id.tv_jingji);
+        jingJi.setVisibility(View.GONE);
+        EditText etWideMin = (EditText) inflate.findViewById(R.id.etWideMin);
+        setRegion(etWideMin);
+        EditText etWideMax = (EditText) inflate.findViewById(R.id.etWideWidthMax);
+        setRegion(etWideMax);
+        EditText etHouduMin = (EditText) inflate.findViewById(R.id.etHouduMin);
+        setRegion(etHouduMin);
+        EditText etHouduMax = (EditText) inflate.findViewById(R.id.etHouduMax);
+        setRegion(etHouduMax);
+        EditText etRadioMin = (EditText) inflate.findViewById(R.id.etRadioMin);
+        setRegion(etRadioMin);
+        EditText etRadioMax = (EditText) inflate.findViewById(R.id.etRadioMax);
+        setRegion(etRadioMax);
+        Button btncommit = (Button) inflate.findViewById(R.id.btn_length_commit);
 
-        Menu menu = popupMenu.getMenu();
-        if (index == 0) {
-            for (UnSoldMarketPort repo : unSoldMarketPort) {
-                menu.add(Menu.NONE, Integer.valueOf(repo.getPortId()), Menu.NONE, repo.getPortName());
+        //设置布局管理器
+        if (currentView != 3) {
+            leghtlay.setVisibility(View.GONE);
+            widthHeight.setVisibility(View.GONE);
+            btncommit.setVisibility(View.GONE);
+        }
+        RecyclerView.LayoutManager manager = new GridLayoutManager(this, 4);
+        recyclerviewTab.setLayoutManager(manager);
+
+        adapter = new MyGridAdapter();
+        recyclerviewTab.setAdapter(adapter);
+        if (adapter != null) {
+            adapter.clear();
+        }
+        if (currentView == 0) {
+            adapter.addDatas(portList);
+            adapter.setOnItemClickListener(new MyGridAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int postion) {
+                    textViews[0].setText(portList.get(postion));
+                    portId = Integer.valueOf(unSoldMarketPort.get(postion).getPortId());
+                    ptrWrapper.autoRefresh();
+                    mPopup.dismiss();
+                }
+            });
+
+
+        } else if (currentView == 1) {
+            adapter.addDatas(kindList);
+            adapter.setOnItemClickListener(new MyGridAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int postion) {
+                    textViews[1].setText(kindList.get(postion));
+                    kindid = Integer.valueOf(unSoldMarketKind.get(postion).getKindId());
+                    ptrWrapper.autoRefresh();
+                    mPopup.dismiss();
+                }
+            });
+
+
+        } else if (currentView == 2) {
+            adapter.addDatas(stuffidList);
+            adapter.setOnItemClickListener(new MyGridAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int postion) {
+                    textViews[2].setText(stuffidList.get(postion));
+                    stuffid = Integer.valueOf(unSoldMarketStuff.get(postion).getStuffId());
+                    ptrWrapper.autoRefresh();
+                    mPopup.dismiss();
+                }
+            });
+
+
+        } else if (currentView == 3) {
+
+            if (textViews[1].getText().toString().equals("原木")) {
+                jingJi.setVisibility(View.VISIBLE);
+                widthHeight.setVisibility(View.GONE);
+
+                String etRadMin = etRadioMin.getText().toString();
+                String etRadMax = etRadioMax.getText().toString();
+
             }
-        } else if (index == 1) {
-            for (UnSoldMarketKind repo : unSoldMarketKind) {
-                menu.add(Menu.NONE, Integer.valueOf(repo.getKindId()), Menu.NONE, repo.getKindName());
-            }
-        } else if (index == 2) {
-            for (UnSoldMarketStuff repo : unSoldMarketStuff) {
-                menu.add(Menu.NONE, Integer.valueOf(repo.getStuffId()), Menu.NONE, repo.getStuffName());
-            }
-        } else {
-            for (UnSoldMarketLength repo : unSoldMarketLength) {
-                menu.add(Menu.NONE, Integer.valueOf(repo.getLenId()), Menu.NONE, repo.getLenName());
-            }
+
+            String etWidMin = etWideMin.getText().toString();
+            String etWidMax = etWideMax.getText().toString();
+            String etHouMax = etHouduMax.getText().toString();
+            String etHouMin = etHouduMin.getText().toString();
+
+            adapter.addDatas(lengthList);
+            adapter.setOnItemClickListener(new MyGridAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int postion) {
+                    productlen = Integer.valueOf(unSoldMarketLength.get(postion).getLenId());
+
+                }
+            });
         }
 
-        popupMenu.show();
+        mPopup = new PopupWindow(inflate, ViewGroup.LayoutParams.MATCH_PARENT, 600, false);
+
+
+        /** 设置背景 */
+        // 设置点击窗口外边窗口消失
+        mPopup.setOutsideTouchable(true);
+        // 设置此参数获得焦点，否则无法点击
+        mPopup.setFocusable(true);
     }
 
     @OnItemClick(R.id.list_unsold_goods)
     public void JumpToInfo(int position) {
         UnSoldMarket item = unSoldMarketAdapter.getItem(position);
-
         String cdKey = item.getCdKey();
         Intent intent = RailwayGoodsInfoActivity.getStartIntent(this, cdKey);
         startActivity(intent);
 
     }
 
-    private PopupMenu.OnMenuItemClickListener menuItemListener = new PopupMenu.OnMenuItemClickListener() {
-        @Override
-        public boolean onMenuItemClick(MenuItem item) {
-            //改变标题 和数据
-            textViews[currentView].setText(item.getTitle().toString());
-            textViews[currentView].setTextColor(getResources().getColor(R.color.unsold_tab_textcolor));
-            pagenum = 0;
-            if (currentView == 0) {
-                if (item.getTitle().toString().equals("不限")) {
-                    portId = 0;
-                } else {
-                    portId = item.getItemId();
+    //    private TextWatcher textWacher = new TextWatcher() {
+    private int MIN_MARK = 10;
+    private int MAX_MARK = 500;
+
+    //private void setRegion(EditText et)
+    private void setRegion(final EditText et) {
+        et.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (start > 1) {
+                    if (MIN_MARK != 9 && MAX_MARK != 9) {
+                        int num = Integer.parseInt(s.toString());
+                        if (num > MAX_MARK) {
+                            s = String.valueOf(MAX_MARK);
+                            et.setText(s);
+                        } else if (num < MIN_MARK)
+                            s = String.valueOf(MIN_MARK);
+                        return;
+                    }
                 }
-                LoadData(true);
-            } else if (currentView == 1) {
-                if (item.getTitle().toString().equals("不限")) {
-                    kindid = 0;
-                } else {
-                    kindid = item.getItemId();
-                }
-                LoadData(true);
-            } else if (currentView == 2) {
-                if (item.getTitle().toString().equals("不限")) {
-                    stuffid = 0;
-                } else {
-                    stuffid = item.getItemId();
-                }
-                LoadData(true);
-            } else if (currentView == 3) {
-                if (item.getTitle().toString().equals("不限")) {
-                    productlen = 0;
-                } else {
-                    productlen = item.getItemId();
-                }
-                LoadData(true);
             }
 
-            return true;
-        }
-    };
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s != null && !s.equals("")) {
+                    if (MIN_MARK != -1 && MAX_MARK != -1) {
+                        int markVal = 0;
+                        try {
+                            markVal = Integer.parseInt(s.toString());
+                        } catch (NumberFormatException e) {
+                            markVal = 0;
+                        }
+                        if (markVal > MAX_MARK) {
+                            Toast.makeText(getBaseContext(), "不能超过500", Toast.LENGTH_SHORT).show();
+                            et.setText(String.valueOf(MAX_MARK));
+                        }
+                        return;
+                    }
+                }
+            }
+        });
+    }
 
     @Override
     protected void onDestroy() {
@@ -312,6 +487,5 @@ public class UnSoldMarketActivity extends BaseActivity {
         unSoldMarketRspCall.cancel();
         unSoldMarketRspCall = null;
     }
-
 
 }

@@ -7,6 +7,8 @@ import com.jywy.woodpersons.network.entity.RailwayGoodsListRsp;
 import com.jywy.woodpersons.network.entity.RailwayGoodsRsp;
 import com.jywy.woodpersons.network.entity.UnSoldMarketListRsp;
 import com.jywy.woodpersons.network.entity.UnSoldMarketRsp;
+import com.jywy.woodpersons.network.entity.WoodBuyInfoRsp;
+import com.jywy.woodpersons.network.entity.WoodBuyRsp;
 import com.jywy.woodpersons.soft_update.AppVersion;
 
 import retrofit2.Call;
@@ -59,22 +61,52 @@ public interface WoodPersonsApi {
     //未售市场按钮数据
     @Multipart
     @POST("Index/market")
-    Call<UnSoldMarketRsp> getUnSoldMarket(@Part("portid") int portid, @Part("kindid") int kindid, @Part("stuffid") int stuffid, @Part("productlen") int productlen, @Part("pagenum") int pagenum, @Part("userid") int userid);
+    Call<UnSoldMarketRsp> getUnSoldMarket(@Part("portid") int portid,
+                                          @Part("kindid") int kindid,
+                                          @Part("stuffid") int stuffid,
+                                          @Part("productlen") int productlen,
+                                          @Part("pagenum") int pagenum,
+                                          @Part("userid") int userid,
+                                          @Part("wide") int wide,
+                                          @Part("wideMax") int wideMax,
+                                          @Part("thinckness") int thinckness,
+                                          @Part("thincknessMax") int thincknessMax,
+                                          @Part("diamterlen") int diamterlen,
+                                          @Part("diamterlenMax") int diamterlenMax
+
+    );
 //
 //    货种kindid
 //            树种stuffid
 //    长度productlen
 //            口岸portid
 //    当前页num
-//    用户ID:userid
+////    用户ID:userid
+//    　　 最小值　　　 最大值
+//    径级  diamterlen   diamterlenMax
+//    厚度  thinckness    thincknessMax
+//    宽度  wide  wideMax
 
 
     //    http://dev.sxuav.com/index.php/Mcrapp/Index/getbaseinfo
     @Multipart
     @POST("Index/getbaseinfo")
-    Call<UnSoldMarketListRsp> getUnSoldMarketListTab(@Part("userid")int userid);
+    Call<UnSoldMarketListRsp> getUnSoldMarketListTab(@Part("userid") int userid);
 
     @GET("App/appVersion")
     Call<AppVersion> getAppVersion();
+
+    //求购列表
+    @Multipart
+    @POST("Index/buylist")
+    Call<WoodBuyRsp> getWoodBuyMarket(@Part("portid") int portid, @Part("kindid") int kindid, @Part("stuffid") int stuffid, @Part("productlen") int productlen, @Part("pagenum") int pagenum, @Part("userid") int userid);
+    //请求参数：kindid,stuffid,productlen,portid,pagenum
+
+//    求购明细  index.php/Mcrapp/Index/buydetail
+//    请求参数: serid,buyid
+
+    @Multipart
+    @POST("Index/buydetail")
+    Call<WoodBuyInfoRsp> getWoodBuyInfo(@Part("buyid") int buyid, @Part("userid") int userid);
 
 }

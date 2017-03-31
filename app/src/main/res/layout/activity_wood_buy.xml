@@ -71,15 +71,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_buy_error_text"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="该分类没有数据，请切换其他分类"
-            android:visibility="invisible"/>
-
-
         <!--第三方控件：刷新加载-->
         <in.srain.cube.views.ptr.PtrFrameLayout
             android:id="@id/standard_refresh_layout"
@@ -93,5 +84,14 @@
                 android:dividerHeight="1dp"
                 android:scrollbars="none"/>
         </in.srain.cube.views.ptr.PtrFrameLayout>
+
+        <TextView
+            android:id="@+id/tv_buy_error_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="该分类没有数据，请切换其他分类"
+            android:visibility="invisible"/>
+
     </FrameLayout>
 </LinearLayout>
