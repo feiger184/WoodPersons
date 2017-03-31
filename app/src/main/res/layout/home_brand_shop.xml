@@ -13,7 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:textColor="#000"
+            android:textColor="#151515"
             android:textSize="20sp"
             android:text="品牌店铺"/>
 
@@ -50,8 +50,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:textSize="18sp"
-                android:textColor="#000"
+                android:textSize="15sp"
+                android:textColor="#151515"
                 android:text="常宇货场"/>
         </LinearLayout>
         <View
@@ -70,8 +70,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:textSize="18sp"
-                android:textColor="#000"
+                android:textSize="15sp"
+                android:textColor="#151515"
                 android:text="常宇货场"/>
         </LinearLayout>
         <View
@@ -90,8 +90,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:textSize="18sp"
-                android:textColor="#000"
+                android:textSize="15sp"
+                android:textColor="#151515"
                 android:text="常宇货场"/>
         </LinearLayout>
 
@@ -112,7 +112,7 @@
             android:layout_weight="1"
             android:drawableTop="@drawable/wood_count"
             android:drawablePadding="10dp"
-            android:textColor="#000"
+            android:textColor="#151515"
             android:text="材积计算"/>
         <!--<View-->
             <!--android:layout_width="1dp"-->
@@ -126,7 +126,7 @@
             android:layout_weight="1"
             android:drawableTop="@drawable/wood_message"
             android:drawablePadding="10dp"
-            android:textColor="#000"
+            android:textColor="#151515"
             android:text="   咨询   "/>
         <!--<View-->
             <!--android:layout_width="1dp"-->
@@ -140,7 +140,7 @@
             android:layout_weight="1"
             android:drawableTop="@drawable/wood_freight"
             android:drawablePadding="10dp"
-            android:textColor="#000"
+            android:textColor="#151515"
             android:text="   运费   "/>
         <!--<View-->
             <!--android:layout_width="1dp"-->
@@ -154,7 +154,7 @@
             android:layout_weight="1"
             android:drawableTop="@drawable/wood_recommend"
             android:drawablePadding="10dp"
-            android:textColor="#000"
+            android:textColor="#151515"
             android:text="企业推荐"/>
     </LinearLayout>
         <!--三-->

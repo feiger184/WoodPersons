@@ -15,7 +15,7 @@
         android:id="@+id/radio_show"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_45"
-        android:layout_marginTop="@dimen/size_18"
+        android:layout_marginTop="@dimen/size_5"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="2">
@@ -27,8 +27,6 @@
             android:layout_margin="5dp"
             android:layout_weight="0.16"
             android:button="@null"
-            android:drawableBottom="@drawable/railway_xhx"
-            android:drawablePadding="5dp"
             android:gravity="center"
             android:text="按列显示"
             android:textColor="#51C85E"
@@ -43,10 +41,31 @@
             android:button="@null"
             android:gravity="center"
             android:text="按位置显示"
+            android:textColor="#151515"
             android:textSize="20sp"/>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
+        <View
+            android:layout_width="146dp"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:background="#83D78C"/>
+
+        <View
+            android:layout_width="146dp"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:background="#fff"/>
+
+    </LinearLayout>
 
     <!--第三方控件：刷新加载-->
 

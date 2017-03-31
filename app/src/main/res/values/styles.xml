@@ -8,7 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-
     <style name="AppBarText" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/app_bar_text</item>
     </style>

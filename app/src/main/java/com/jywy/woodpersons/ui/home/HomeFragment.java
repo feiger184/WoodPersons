@@ -20,6 +20,8 @@ import com.jywy.woodpersons.commons.ActivityUtils;
 import com.jywy.woodpersons.network.WoodPersonsClient;
 import com.jywy.woodpersons.network.entity.ExChangRate;
 import com.jywy.woodpersons.network.entity.ExChangeRateRsp;
+import com.jywy.woodpersons.network.entity.HomeGuanZhu;
+import com.jywy.woodpersons.network.entity.HomeGuanZhuRsp;
 import com.jywy.woodpersons.network.entity.HomeUnSoldMarketRsp;
 import com.jywy.woodpersons.network.entity.UnSoldMarket;
 import com.jywy.woodpersons.ui.home.buy.WoodBuy;
@@ -48,6 +50,12 @@ public class HomeFragment extends BaseFragment {
 
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerView;
+    @BindView(R.id.tv_vehicle)
+    TextView tvVehicle;
+    @BindView(R.id.tv_focus)
+    TextView tvFocus;
+    @BindView(R.id.tv_hit)
+    TextView tvHit;
 
     private RecyclerView.LayoutManager mLayoutManager;
     private UnsoldAdapter mAdapter;
@@ -71,6 +79,13 @@ public class HomeFragment extends BaseFragment {
                 buildData();
             }
 
+            if (msg.what == 3) {
+                HomeGuanZhu homeGuanZhu = (HomeGuanZhu) msg.obj;
+                tvVehicle.setText(homeGuanZhu.getWagonsNum() + "");
+                tvFocus.setText(homeGuanZhu.getFansStar() + "");
+                tvHit.setText(homeGuanZhu.getViewNum()+"");
+            }
+
         }
     };
     private List<UnsoldInfo> list = new ArrayList<>();
@@ -87,32 +102,36 @@ public class HomeFragment extends BaseFragment {
         * */
     protected void initView() {
         activityUtils = new ActivityUtils(this);
-        getExChangeRate();//加载汇率数据
         getHomeUnsoldMarketData();
-
         initDrawable();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        getExChangeRate();//加载汇率数据
+        getHomeGuanZhu();
+    }
 
     //图片处理
     protected void initDrawable() {
-        TextView tv_railway = ButterKnife.findById((Activity) getContext(),R.id.tv_Railway_goods);
-        TextView tv_home_offer = ButterKnife.findById((Activity) getContext(),R.id.tv_home_offer);
-        TextView tv_home_order = ButterKnife.findById((Activity) getContext(),R.id.tv_home_order);
-        TextView tv_home_boutique = ButterKnife.findById((Activity) getContext(),R.id.tv_home_boutique);
-        TextView tv_home_store = ButterKnife.findById((Activity) getContext(),R.id.tv_home_store);
-        TextView tv_home_unsold = ButterKnife.findById((Activity) getContext(),R.id.tv_home_unsold);
-        TextView tv_home_buy = ButterKnife.findById((Activity) getContext(),R.id.tv_home_buy);
-        TextView tv_home_more = ButterKnife.findById((Activity) getContext(),R.id.tv_home_more);
+        TextView tv_railway = ButterKnife.findById((Activity) getContext(), R.id.tv_Railway_goods);
+        TextView tv_home_offer = ButterKnife.findById((Activity) getContext(), R.id.tv_home_offer);
+        TextView tv_home_order = ButterKnife.findById((Activity) getContext(), R.id.tv_home_order);
+        TextView tv_home_boutique = ButterKnife.findById((Activity) getContext(), R.id.tv_home_boutique);
+        TextView tv_home_store = ButterKnife.findById((Activity) getContext(), R.id.tv_home_store);
+        TextView tv_home_unsold = ButterKnife.findById((Activity) getContext(), R.id.tv_home_unsold);
+        TextView tv_home_buy = ButterKnife.findById((Activity) getContext(), R.id.tv_home_buy);
+        TextView tv_home_more = ButterKnife.findById((Activity) getContext(), R.id.tv_home_more);
 
-        Drawable dw_railway=getResources().getDrawable(R.drawable.home_railway);
-        Drawable dw_offer=getResources().getDrawable(R.drawable.home_offer);
-        Drawable dw_order=getResources().getDrawable(R.drawable.home_order);
-        Drawable dw_boutique=getResources().getDrawable(R.drawable.home_boutique);
-        Drawable dw_store=getResources().getDrawable(R.drawable.home_store);
-        Drawable dw_unsold=getResources().getDrawable(R.drawable.home_unsold);
-        Drawable dw_buy=getResources().getDrawable(R.drawable.home_buy);
-        Drawable dw_home_more=getResources().getDrawable(R.drawable.home_more);
+        Drawable dw_railway = getResources().getDrawable(R.drawable.home_railway);
+        Drawable dw_offer = getResources().getDrawable(R.drawable.home_offer);
+        Drawable dw_order = getResources().getDrawable(R.drawable.home_order);
+        Drawable dw_boutique = getResources().getDrawable(R.drawable.home_boutique);
+        Drawable dw_store = getResources().getDrawable(R.drawable.home_store);
+        Drawable dw_unsold = getResources().getDrawable(R.drawable.home_unsold);
+        Drawable dw_buy = getResources().getDrawable(R.drawable.home_buy);
+        Drawable dw_home_more = getResources().getDrawable(R.drawable.home_more);
 
         dw_railway.setBounds(0, 0, 160, 160);//第一0是距左边距离，第二0是距上边距离，160分别是长宽
         tv_railway.setCompoundDrawables(null, dw_railway, null, null);//只放左边
@@ -132,21 +151,21 @@ public class HomeFragment extends BaseFragment {
         tv_home_more.setCompoundDrawables(null, dw_home_more, null, null);//只放左边
 
         //汇率
-        TextView tv_parities=ButterKnife.findById((Activity) getContext(),R.id.tv_parities);
-        Drawable dw_parities=getResources().getDrawable(R.drawable.parities);
-        dw_parities.setBounds(0,0,40,40);
-        tv_parities.setCompoundDrawables(dw_parities,null,null,null);
+        TextView tv_parities = ButterKnife.findById((Activity) getContext(), R.id.tv_parities);
+        Drawable dw_parities = getResources().getDrawable(R.drawable.parities);
+        dw_parities.setBounds(0, 0, 40, 40);
+        tv_parities.setCompoundDrawables(dw_parities, null, null, null);
 
         //店铺 上面4个
-        TextView tv_wood_count = ButterKnife.findById((Activity) getContext(),R.id.tv_wood_count);
-        TextView tv_wood_message = ButterKnife.findById((Activity) getContext(),R.id.tv_wood_message);
-        TextView tv_wood_freight = ButterKnife.findById((Activity) getContext(),R.id.tv_wood_freight);
-        TextView tv_wood_recommend = ButterKnife.findById((Activity) getContext(),R.id.tv_wood_recommend);
+        TextView tv_wood_count = ButterKnife.findById((Activity) getContext(), R.id.tv_wood_count);
+        TextView tv_wood_message = ButterKnife.findById((Activity) getContext(), R.id.tv_wood_message);
+        TextView tv_wood_freight = ButterKnife.findById((Activity) getContext(), R.id.tv_wood_freight);
+        TextView tv_wood_recommend = ButterKnife.findById((Activity) getContext(), R.id.tv_wood_recommend);
 
-        Drawable dw_wood_count=getResources().getDrawable(R.drawable.wood_count);
-        Drawable dw_wood_message=getResources().getDrawable(R.drawable.wood_message);
-        Drawable dw_wood_freight=getResources().getDrawable(R.drawable.wood_freight);
-        Drawable dw_wood_recommend=getResources().getDrawable(R.drawable.wood_recommend);
+        Drawable dw_wood_count = getResources().getDrawable(R.drawable.wood_count);
+        Drawable dw_wood_message = getResources().getDrawable(R.drawable.wood_message);
+        Drawable dw_wood_freight = getResources().getDrawable(R.drawable.wood_freight);
+        Drawable dw_wood_recommend = getResources().getDrawable(R.drawable.wood_recommend);
 
         dw_wood_count.setBounds(0, 0, 80, 80);
         tv_wood_count.setCompoundDrawables(null, dw_wood_count, null, null);//只放上边
@@ -203,6 +222,7 @@ public class HomeFragment extends BaseFragment {
         });
 
     }
+
 
     //展示汇率 跑马灯
     private void ShowExchangeRateToTextView() {
@@ -270,7 +290,7 @@ public class HomeFragment extends BaseFragment {
 
     }
 
-    //生成4个产品数据，这些Url地址都来源于网络
+    //生成4个未售产品数据
     private void buildData() {
 
         //设置布局管理器为2列，纵向
@@ -324,6 +344,28 @@ public class HomeFragment extends BaseFragment {
         activityUtils.startActivity(UnSoldMarketActivity.class);
     }
 
+    //得到关注数据
+    public void getHomeGuanZhu() {
+        Call<HomeGuanZhuRsp> homeGuanZhu = WoodPersonsClient.getInstance().getWoodPersonsApi().getHomeGuanZhu();
+        homeGuanZhu.enqueue(new Callback<HomeGuanZhuRsp>() {
+            @Override
+            public void onResponse(Call<HomeGuanZhuRsp> call, Response<HomeGuanZhuRsp> response) {
+                if (response.isSuccessful()) {
+                    HomeGuanZhuRsp body = response.body();
+                    HomeGuanZhu homeGuanZhu1 = body.getHomeGuanZhu();
+                    Message message = handler.obtainMessage();
+                    message.what = 3;
+                    message.obj = homeGuanZhu1;
+                    handler.sendMessage(message);
+                }
 
+            }
+
+            @Override
+            public void onFailure(Call<HomeGuanZhuRsp> call, Throwable t) {
+                activityUtils.showToast("加载失败了" + t.getMessage());
+            }
+        });
+    }
 }
 

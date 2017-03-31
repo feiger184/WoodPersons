@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<com.jywy.woodpersons.commons.PercentLinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_wood_buy"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_worry_buy_market"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -10,75 +10,74 @@
     <include
         layout="@layout/partial_action_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="9%"/>
 
     <LinearLayout
+        android:id="@+id/tab_buy_linear"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_heightPercent="8%">
 
         <TextView
             android:id="@+id/tv_buy_place"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawablePadding="2dp"
+            android:drawablePadding="-30dp"
             android:drawableRight="@drawable/ic_keyboard_arrow_down"
             android:gravity="center"
             android:text="区域"
-            android:textStyle="bold"/>
+            android:textColor="#000"/>
+
 
         <TextView
             android:id="@+id/tv_buy_goods"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawablePadding="2dp"
+            android:drawablePadding="-30dp"
             android:drawableRight="@drawable/ic_keyboard_arrow_down"
             android:gravity="center"
             android:text="货种"
-            android:textStyle="bold"/>
+            android:textColor="#000"/>
 
         <TextView
             android:id="@+id/tv_buy_tree"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawablePadding="2dp"
+            android:drawablePadding="-30dp"
             android:drawableRight="@drawable/ic_keyboard_arrow_down"
             android:gravity="center"
             android:text="树种"
-            android:textStyle="bold"/>
+            android:textColor="#000"/>
 
         <TextView
             android:id="@+id/tv_buy_more"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawablePadding="2dp"
+            android:drawablePadding="-30dp"
             android:drawableRight="@drawable/ic_keyboard_arrow_down"
             android:gravity="center"
             android:text="更多"
-            android:textStyle="bold"/>
+            android:textColor="#000"/>
+
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="#000"/>
+        android:background="#f5f5f5"/>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/tv_buy_error_text"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="该分类没有数据，请切换其他分类"
-            android:visibility="invisible"/>
-
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_heightPercent="73%">
 
         <!--第三方控件：刷新加载-->
         <in.srain.cube.views.ptr.PtrFrameLayout
@@ -90,8 +89,38 @@
                 android:id="@+id/list_wood_buy"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:divider="#f5f5f5"
                 android:dividerHeight="1dp"
                 android:scrollbars="none"/>
         </in.srain.cube.views.ptr.PtrFrameLayout>
+
+
+        <TextView
+            android:id="@+id/tv_buy_error_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="该分类没有数据，请切换其他分类"
+            android:visibility="invisible"/>
     </FrameLayout>
-</LinearLayout>
+
+    <android.support.percent.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="10%">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_unsold"
+            android:gravity="center"
+            android:text="求购发布"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            app:layout_heightPercent="80%"
+            app:layout_marginLeftPercent="15%"
+            app:layout_marginTopPercent="10%"
+            app:layout_widthPercent="70%"/>
+    </android.support.percent.PercentRelativeLayout>
+
+</com.jywy.woodpersons.commons.PercentLinearLayout>

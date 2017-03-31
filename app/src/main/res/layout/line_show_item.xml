@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
+        android:textColor="#151515"
         android:text="12:57"/>
 
     <TextView
@@ -20,7 +21,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:text="第04列"
-        android:textColor="#000"
+        android:textColor="#151515"
         android:textStyle="bold"/>
 
     <TextView
@@ -29,6 +30,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
+        android:textColor="#151515"
         android:text="到货56车"/>
 
     <TextView
@@ -37,6 +39,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
+        android:textColor="#151515"
         android:text="原木26"/>
 
     <TextView
@@ -45,6 +48,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
+        android:textColor="#151515"
         android:text="板材30"/>
 
 

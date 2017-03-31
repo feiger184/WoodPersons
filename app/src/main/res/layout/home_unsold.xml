@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:text="未售"
-            android:textColor="#000"
+            android:textColor="#151515"
             android:textSize="20sp"/>
 
         <TextView

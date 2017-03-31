@@ -1,254 +1,271 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
-        <!--搜索框+8个按钮  search_eight-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/shape_home_eight"
-            android:orientation="vertical">
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <!--搜索框+8个按钮  search_eight-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/shape_home_eight"
+        android:orientation="vertical">
 
-            <!--搜索-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:background="@drawable/shapesearch">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="17dp"
-                    android:layout_margin="15dp"
-                    android:background="@drawable/search"/>
-
-                <EditText
-                    android:id="@+id/edit_text"
-                    android:layout_width="200dip"
-                    android:layout_height="40dip"
-                    android:hint="请输入车皮号/手机号"
-                    android:background="@null"
-                    android:textSize="16sp"
-                    android:inputType="text"
-                    android:imeOptions="actionSearch"
-                    android:cursorVisible="false"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"/>
-            </RelativeLayout>
-            <!--一层-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="4"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/tv_Railway_goods"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/home_railway"
-                    android:drawablePadding="10dp"
-                    android:textColor="#000"
-                    android:text="@string/Railway_goods"/>
-                <TextView
-                    android:id="@+id/tv_home_offer"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/home_offer"
-                    android:drawablePadding="10dp"
-                    android:textColor="#000"
-                    android:text="看报价"/>
-                <TextView
-                    android:id="@+id/tv_home_order"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/home_order"
-                    android:drawablePadding="10dp"
-                    android:textColor="#000"
-                    android:text="我要订货"/>
-                <TextView
-                    android:id="@+id/tv_home_boutique"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/home_boutique"
-                    android:drawablePadding="10dp"
-                    android:textColor="#000"
-                    android:text="付费精品"/>
-            </LinearLayout>
-            <!--二层-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="4"
-                android:layout_marginTop="10dp"
-                android:paddingBottom="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/tv_home_store"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/home_store"
-                    android:drawablePadding="10dp"
-                    android:textColor="#000"
-                    android:text="品牌店铺"/>
-                <TextView
-                    android:id="@+id/tv_home_unsold"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/home_unsold"
-                    android:drawablePadding="10dp"
-                    android:textColor="#000"
-                    android:text="未售"/>
-                <TextView
-                    android:id="@+id/tv_home_buy"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/home_buy"
-                    android:drawablePadding="10dp"
-                    android:textColor="#000"
-                    android:text="求购"/>
-                <TextView
-                    android:id="@+id/tv_home_more"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/home_more"
-                    android:drawablePadding="10dp"
-                    android:textColor="#000"
-                    android:text="更多"/>
-            </LinearLayout>
-        </LinearLayout>
-        <!--汇率部分-->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/tv_parities"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/parities"
-                android:drawablePadding="5dp"
-                android:textSize="15dp"
-                android:textColor="#000"
-                android:gravity="center"
-                android:text="汇率："/>
-
-            <com.jywy.woodpersons.base.MarqueTextView
-                android:id="@+id/tvM"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:ellipsize="marquee"
-                android:singleLine="true"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:textSize="15dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:weightSum="3"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1.1"
-                android:text="24小时到货"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1.3"
-                android:text="今日关注"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="0.6"
-                android:text="今日点击"/>
-        </LinearLayout>
-
+        <!--搜索-->
         <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/shapesearch"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="17dp"
+                android:layout_margin="15dp"
+                android:background="@drawable/search"/>
+
+            <EditText
+                android:id="@+id/edit_text"
+                android:layout_width="200dip"
+                android:layout_height="40dip"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:cursorVisible="false"
+                android:hint="请输入车皮号/手机号"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:textSize="16sp"/>
+        </RelativeLayout>
+        <!--一层-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:id="@+id/tv_Railway_goods"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/home_railway"
+                android:gravity="center"
+                android:text="@string/Railway_goods"
+                android:textColor="#151515"/>
+
+            <TextView
+                android:id="@+id/tv_home_offer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/home_offer"
+                android:gravity="center"
+                android:text="看报价"
+                android:textColor="#151515"/>
+
+            <TextView
+                android:id="@+id/tv_home_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/home_order"
+                android:gravity="center"
+                android:text="我要订货"
+                android:textColor="#151515"/>
+
+            <TextView
+                android:id="@+id/tv_home_boutique"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/home_boutique"
+                android:gravity="center"
+                android:text="付费精品"
+                android:textColor="#151515"/>
+        </LinearLayout>
+        <!--二层-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:weightSum="4">
+
+            <TextView
+                android:id="@+id/tv_home_store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/home_store"
+                android:gravity="center"
+                android:text="品牌店铺"
+                android:textColor="#151515"/>
+
+            <TextView
+                android:id="@+id/tv_home_unsold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/home_unsold"
+                android:gravity="center"
+                android:text="未售"
+                android:textColor="#151515"/>
+
+            <TextView
+                android:id="@+id/tv_home_buy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/home_buy"
+                android:gravity="center"
+                android:text="求购"
+                android:textColor="#151515"/>
+
+            <TextView
+                android:id="@+id/tv_home_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/home_more"
+                android:gravity="center"
+                android:text="更多"
+                android:textColor="#151515"/>
+        </LinearLayout>
+    </LinearLayout>
+    <!--汇率部分-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_parities"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/parities"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="汇率："
+            android:textColor="#151515"
+            android:textSize="15dp"/>
+
+        <com.jywy.woodpersons.base.MarqueTextView
+            android:id="@+id/tvM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:textSize="15dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1"
+            android:text="24小时到货"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1.3"
+            android:text="今日关注"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:text="今日点击"/>
+    </LinearLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
             android:id="@+id/tv_vehicle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:text="1890"
             android:textColor="#000"
-            android:textStyle="bold"
-            android:text="1890"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="车"
-            android:layout_marginLeft="5dp"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/tv_vehicle"/>
+            android:textSize="20dp"
+            android:textStyle="bold"/>
 
         <TextView
-        android:id="@+id/tv_focus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:text="124568"
-        android:layout_marginStart="130dp"
-        android:layout_alignParentTop="true"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toEndOf="@+id/tv_vehicle"
+            android:text="车"/>
+
+        <TextView
+            android:id="@+id/tv_focus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="130dp"
+            android:text="124568"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="人"
-            android:layout_marginLeft="5dp"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/tv_focus"/>
+            android:layout_marginLeft="5dp"
+            android:layout_toEndOf="@+id/tv_focus"
+            android:text="人"/>
 
         <TextView
             android:id="@+id/tv_hit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textColor="#000"
-            android:textStyle="bold"
-            android:text="68980"
-            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="29dp"/>
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="29dp"
+            android:text="68980"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="次"
-            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"/>
+            android:layout_marginEnd="10dp"
+            android:text="次"/>
 
     </RelativeLayout>
 </LinearLayout>

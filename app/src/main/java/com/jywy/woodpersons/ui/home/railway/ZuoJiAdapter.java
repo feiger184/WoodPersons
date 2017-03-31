@@ -48,7 +48,7 @@ public class ZuoJiAdapter extends RecyclerView.Adapter<ZuoJiAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        holder.mTxt.setText(mDatas.get(position) + "\t");
+        holder.mTxt.setText(mDatas.get(position) + "     ");
         //如果设置了回调，则设置点击事件
         if (mOnItemClickLitener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {

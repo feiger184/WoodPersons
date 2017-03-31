@@ -137,8 +137,6 @@ public class RailwayActivitySecond extends BaseActivity {
 
     // 网络请求获取数据
     private void searchGoods(final boolean isRefresh) {
-
-
         if (isRefresh) {
             mLastRefreshTime = System.currentTimeMillis();
 

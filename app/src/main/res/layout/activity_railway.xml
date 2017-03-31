@@ -11,7 +11,8 @@
     <include
         layout="@layout/partial_action_bar"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"/>
+        android:layout_width="match_parent"
+        android:id="@+id/include"/>
 
     <TextView
         android:layout_width="0dp"
@@ -22,9 +23,9 @@
         android:gravity="center"
         android:textColor="#fff"
         android:textSize="@dimen/font_20"
-        app:layout_heightPercent="10%"
+        app:layout_heightPercent="8%"
         app:layout_widthPercent="80%"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="18dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
 
@@ -37,7 +38,8 @@
         android:weightSum="3"
         android:layout_marginLeft="@dimen/size_18"
         android:layout_marginRight="@dimen/size_18"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/include"
         android:layout_centerHorizontal="true">
 
         <TextView
@@ -48,8 +50,8 @@
             android:drawableTop="@drawable/nzh"
             android:drawablePadding="@dimen/size_10"
             android:gravity="center"
-            android:textSize="@dimen/font_huge"
-            android:textColor="#000"
+            android:textSize="@dimen/font_large"
+            android:textColor="#151515"
             android:text="@string/text_nzh"/>
 
         <TextView
@@ -60,8 +62,8 @@
             android:drawableTop="@drawable/erenhot"
             android:drawablePadding="@dimen/size_10"
             android:gravity="center"
-            android:textSize="@dimen/font_huge"
-            android:textColor="#000"
+            android:textSize="@dimen/font_large"
+            android:textColor="#151515"
             android:text="@string/text_erenhot"/>
 
         <TextView
@@ -72,8 +74,8 @@
             android:drawableTop="@drawable/suifenhe"
             android:drawablePadding="@dimen/size_10"
             android:gravity="center"
-            android:textSize="@dimen/font_huge"
-            android:textColor="#000"
+            android:textSize="@dimen/font_large"
+            android:textColor="#151515"
             android:text="绥芬河"/>
 
     </LinearLayout>

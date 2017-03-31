@@ -13,7 +13,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@id/standard_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_45"
+        android:layout_height="62dp"
         android:background="#33C147"
         app:theme="@style/Widget.AppCompat.Toolbar"
         tools:ignore="Overdraw"

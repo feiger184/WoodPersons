@@ -3,11 +3,8 @@ package com.jywy.woodpersons.base;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
-import android.view.Menu;
 import android.view.MenuItem;
 
-import com.jywy.woodpersons.MainActivity;
-import com.jywy.woodpersons.R;
 import com.jywy.woodpersons.commons.ActivityUtils;
 
 import butterknife.ButterKnife;
@@ -63,20 +60,11 @@ public abstract class BaseActivity extends TransitionActivity {
 //            mWindow.setNavigationBarColor(Color.TRANSPARENT);
 //        }
 //    }
-    //右上角按钮
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.layout_menu_home, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getItemId() == R.id.menu_home) {
-            activityUtils.startActivity(MainActivity.class);
-
-        }
         if (item.getItemId() == android.R.id.home) {
             finish();
         }
