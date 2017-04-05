@@ -70,6 +70,7 @@
             android:name=".MainActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
+
         </activity>
         <activity
             android:name=".ui.home.railway.RailwayActivity"
@@ -90,22 +91,29 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
         </activity>
-
         <activity
             android:name=".ui.home.buy.WoodBuy"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".ui.home.unsold.UnSoldMarketActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.home.buy.WoodBuyInfoActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+        </activity>
 
-
-        <activity android:name=".ui.home.unsold.UnSoldMarketActivity"
-                  android:launchMode="singleTop"
+        <activity android:name=".ui.home.railway.RailwayGoodsInfoPictureActivity"
                   android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.home.buy.WoodBuyInfoActivity"
-                  android:launchMode="singleTop"
+        <activity android:name=".ui.user.register.RegisterActivity"
                   android:screenOrientation="portrait">
         </activity>
+
 
         <!-- Required SDK 核心功能 -->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
@@ -225,8 +233,6 @@
         <meta-data
             android:name="JPUSH_APPKEY"
             android:value="194e0e08fc4066b584e03a1b"/>
-
-
     </application>
 
 </manifest>

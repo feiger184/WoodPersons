@@ -19,6 +19,9 @@ public class RailwayGoodsInfo {
     @SerializedName("agent")
     private RailwayProductAgent productAgent;
 
+    @SerializedName("pic")
+    private List<RailwayProductPic> productPic;
+
 
     public RailwayProductInfo getProductInfo() {
         return productInfo;
@@ -44,5 +47,13 @@ public class RailwayGoodsInfo {
 
     public void setProductAgent(RailwayProductAgent productAgent) {
         this.productAgent = productAgent;
+    }
+
+    public List<RailwayProductPic> getProductPic() {
+        return productPic;
+    }
+
+    public void setProductPic(List<RailwayProductPic> productPic) {
+        this.productPic = productPic;
     }
 }

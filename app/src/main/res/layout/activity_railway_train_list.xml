@@ -64,7 +64,10 @@
             android:textColor="#151515"
             android:textStyle="bold"/>
     </LinearLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#f2f2f2"/>
 
     <!--第三方控件：刷新加载-->
     <in.srain.cube.views.ptr.PtrFrameLayout

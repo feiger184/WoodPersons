@@ -26,6 +26,7 @@ import com.jywy.woodpersons.base.BaseActivity;
 import com.jywy.woodpersons.base.PtrWrapper;
 import com.jywy.woodpersons.base.wrapper.ToolbarWrapper;
 import com.jywy.woodpersons.commons.ActivityUtils;
+import com.jywy.woodpersons.network.UserPrefs;
 import com.jywy.woodpersons.network.WoodPersonsClient;
 import com.jywy.woodpersons.network.entity.UnSoldMarketKind;
 import com.jywy.woodpersons.network.entity.UnSoldMarketLength;
@@ -152,7 +153,7 @@ public class WoodBuy extends BaseActivity {
 
     //加载Tab标签数据
     private void LoadListTabData() {
-        Call<UnSoldMarketListRsp> unWoodBuyListTab = WoodPersonsClient.getInstance().getWoodPersonsApi().getUnSoldMarketListTab(8);
+        Call<UnSoldMarketListRsp> unWoodBuyListTab = WoodPersonsClient.getInstance().getWoodPersonsApi().getUnSoldMarketListTab(UserPrefs.getInstance().getUserid());
         unWoodBuyListTab.enqueue(new Callback<UnSoldMarketListRsp>() {
             @Override
             public void onResponse(Call<UnSoldMarketListRsp> call, Response<UnSoldMarketListRsp> response) {
@@ -213,7 +214,7 @@ public class WoodBuy extends BaseActivity {
             woodBuyEntityCall.cancel();
         }
         woodBuyEntityCall = WoodPersonsClient.getInstance().getWoodPersonsApi()
-                .getWoodBuyMarket(portId, kindid, stuffid, productlen, pagenum, 8,
+                .getWoodBuyMarket(portId, kindid, stuffid, productlen, pagenum, UserPrefs.getInstance().getUserid(),
                         wide, wideMax, thinckness, thincknessMax, diamterlen,
                         diamterlenMax);
         woodBuyEntityCall.enqueue(new Callback<WoodBuyRsp>() {

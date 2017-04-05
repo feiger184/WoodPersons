@@ -1,5 +1,6 @@
 package com.jywy.woodpersons.ui;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.widget.TextView;
 import com.jywy.woodpersons.MainActivity;
 import com.jywy.woodpersons.R;
 import com.jywy.woodpersons.commons.ActivityUtils;
+import com.jywy.woodpersons.network.UserPrefs;
+import com.jywy.woodpersons.ui.user.register.RegisterActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -32,7 +35,16 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 timer.cancel();
-                activityUtils.startActivity(MainActivity.class);
+
+                // 判断一下用户是不是登录过
+                SharedPreferences preferences = getSharedPreferences("user_info", MODE_PRIVATE);
+                if (preferences!=null){
+                    if (preferences.getInt("key_userid",0)== UserPrefs.getInstance().getUserid()){
+                        activityUtils.startActivity(MainActivity.class);
+                        finish();
+                    }
+                }
+                activityUtils.startActivity(RegisterActivity.class);
                 finish();
             }
         });
@@ -48,7 +60,16 @@ public class SplashActivity extends AppCompatActivity {
                     textView.setText("跳过("+ timeStart + ")");
                     if (timeStart == 0) {
                         timer.cancel();
-                        activityUtils.startActivity(MainActivity.class);
+
+                        // 判断一下用户是不是登录过
+                        SharedPreferences preferences = getSharedPreferences("user_info", MODE_PRIVATE);
+                        if (preferences!=null){
+                            if (preferences.getInt("key_userid",0)== UserPrefs.getInstance().getUserid()){
+                                activityUtils.startActivity(MainActivity.class);
+                                finish();
+                            }
+                        }
+                        activityUtils.startActivity(RegisterActivity.class);
                         finish();
                     }
                 }

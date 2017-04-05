@@ -11,13 +11,16 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/linearlayout"/>
 
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e5e5e5"/>
     <LinearLayout
         android:id="@+id/linearlayout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:background="#fcfcfc"
+        android:background="#fff"
         android:orientation="horizontal"
         android:padding="5dp">
 

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:background="#ffffffff"
+              android:background="#f2f2f2"
               android:layout_height="match_parent">
 
     <ScrollView
@@ -23,9 +23,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="20dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
+                android:paddingBottom="40dp"
                 android:clipChildren="false"
                 android:orientation="vertical">
 
@@ -39,21 +37,28 @@
                 <include
                     layout="@layout/home_brand_shop"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"/>
 
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"/>
                 <!--未售板块 unsold-->
                 <include
                     layout="@layout/home_unsold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#fff"/>
 
                 <!--求购板块  worry_buy-->
                 <include
                     layout="@layout/home_worry_buy"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"/>
 
             </LinearLayout>
 

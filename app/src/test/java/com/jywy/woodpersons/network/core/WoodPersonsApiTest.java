@@ -4,6 +4,7 @@ import com.jywy.woodpersons.network.WoodPersonsClient;
 import com.jywy.woodpersons.network.entity.RailwayGoodsInfoRsp;
 import com.jywy.woodpersons.network.entity.RailwayGoodsListRsp;
 import com.jywy.woodpersons.network.entity.UnSoldMarketListRsp;
+import com.jywy.woodpersons.network.entity.UserRegisterCodeRsp;
 import com.jywy.woodpersons.soft_update.AppVersion;
 
 import org.junit.Test;
@@ -30,9 +31,10 @@ public class WoodPersonsApiTest {
 
     }
 
+//    http://dev.sxuav.com/index.php/Home/Index/showproductdetail.html?cdkey=1864498551417022012572043713205382
     @Test
     public void getRailwayGoodsInfo() throws Exception {
-        Call<RailwayGoodsInfoRsp> railwayGoodsList = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayGoodsInfo("1334704115117021920190140133199381", 8);
+        Call<RailwayGoodsInfoRsp> railwayGoodsList = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayGoodsInfo("1864498551417022012572043713205382", 8);
         railwayGoodsList.execute();
         assertTrue(true);
 
@@ -52,6 +54,13 @@ public class WoodPersonsApiTest {
     public void getAppVersion() throws Exception {
         Call<AppVersion> sas = WoodPersonsClient.getInstance().getWoodPersonsApi().getAppVersion();
         sas.execute();
+        assertTrue(true);
+
+    }
+    @Test
+    public void getRegisterCode() throws Exception {
+        Call<UserRegisterCodeRsp> registerCode = WoodPersonsClient.getInstance().getWoodPersonsApi().getRegisterCode("18435163690");
+        registerCode.execute();
         assertTrue(true);
 
     }

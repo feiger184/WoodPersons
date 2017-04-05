@@ -11,6 +11,7 @@ import com.jywy.woodpersons.base.BaseActivity;
 import com.jywy.woodpersons.base.PtrWrapper;
 import com.jywy.woodpersons.base.wrapper.ToolbarWrapper;
 import com.jywy.woodpersons.commons.ActivityUtils;
+import com.jywy.woodpersons.network.UserPrefs;
 import com.jywy.woodpersons.network.WoodPersonsClient;
 import com.jywy.woodpersons.network.entity.RailwayGoods;
 import com.jywy.woodpersons.network.entity.RailwayGoodsRsp;
@@ -145,7 +146,7 @@ public class RailwayActivitySecond extends BaseActivity {
             rspCall.cancel();
         }
         // 请求
-        rspCall = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayData(1, 8);
+        rspCall = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayData(1, UserPrefs.getInstance().getUserid());
         rspCall.enqueue(new Callback<RailwayGoodsRsp>() {
             @Override
             public void onResponse(Call<RailwayGoodsRsp> call, Response<RailwayGoodsRsp> response) {

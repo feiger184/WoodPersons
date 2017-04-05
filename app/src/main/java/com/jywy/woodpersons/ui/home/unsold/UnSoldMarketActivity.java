@@ -9,7 +9,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +25,7 @@ import com.jywy.woodpersons.base.BaseActivity;
 import com.jywy.woodpersons.base.PtrWrapper;
 import com.jywy.woodpersons.base.wrapper.ToolbarWrapper;
 import com.jywy.woodpersons.commons.ActivityUtils;
+import com.jywy.woodpersons.network.UserPrefs;
 import com.jywy.woodpersons.network.WoodPersonsClient;
 import com.jywy.woodpersons.network.entity.UnSoldMarket;
 import com.jywy.woodpersons.network.entity.UnSoldMarketKind;
@@ -189,7 +189,7 @@ public class UnSoldMarketActivity extends BaseActivity {
         }
 
         unSoldMarketRspCall = WoodPersonsClient.getInstance().getWoodPersonsApi()
-                .getUnSoldMarket(portId, kindid, stuffid, productlen, pagenum, 8,
+                .getUnSoldMarket(portId, kindid, stuffid, productlen, pagenum, UserPrefs.getInstance().getUserid(),
                         wide, wideMax, thinckness, thincknessMax, diamterlen,
                         diamterlenMax);
         unSoldMarketRspCall.enqueue(new Callback<UnSoldMarketRsp>() {
@@ -216,6 +216,9 @@ public class UnSoldMarketActivity extends BaseActivity {
                             listUnsoldGoods.setAdapter(unSoldMarketAdapter);
                             unSoldMarketAdapter.addAll(unSoldMarkets);
                             pagenum++;
+
+                            listUnsoldGoods.setSelection(unSoldMarketAdapter.getCount()-11);
+                            unSoldMarketAdapter.notifyDataSetChanged();
                         }
                     }
                 }
@@ -286,7 +289,7 @@ public class UnSoldMarketActivity extends BaseActivity {
 
     //加载Tab标签数据
     private void LoadListTabData() {
-        Call<UnSoldMarketListRsp> unSoldMarketListTab = WoodPersonsClient.getInstance().getWoodPersonsApi().getUnSoldMarketListTab(8);
+        Call<UnSoldMarketListRsp> unSoldMarketListTab = WoodPersonsClient.getInstance().getWoodPersonsApi().getUnSoldMarketListTab(UserPrefs.getInstance().getUserid());
         unSoldMarketListTab.enqueue(new Callback<UnSoldMarketListRsp>() {
             @Override
             public void onResponse(Call<UnSoldMarketListRsp> call, Response<UnSoldMarketListRsp> response) {
@@ -319,7 +322,7 @@ public class UnSoldMarketActivity extends BaseActivity {
         diamterlen = 0;
         diamterlenMax = 0;
         View inflate = LayoutInflater.from(this).inflate(R.layout.layout_unsold_tab, null);
-        RecyclerView recyclerviewTab = (RecyclerView) inflate.findViewById(R.id.recyclerview_unsold_tab);
+        final RecyclerView recyclerviewTab = (RecyclerView) inflate.findViewById(R.id.recyclerview_unsold_tab);
         final TextView leghtlay = (TextView) inflate.findViewById(R.id.lengthlayout);
         LinearLayout widthHeight = (LinearLayout) inflate.findViewById(R.id.tv_width_height);
         final LinearLayout jingJi = (LinearLayout) inflate.findViewById(R.id.tv_jingji);
@@ -343,9 +346,14 @@ public class UnSoldMarketActivity extends BaseActivity {
             leghtlay.setVisibility(View.GONE);
             widthHeight.setVisibility(View.GONE);
             btncommit.setVisibility(View.GONE);
+
+            RecyclerView.LayoutManager manager = new GridLayoutManager(this, 2);
+            recyclerviewTab.setLayoutManager(manager);
+        } else {
+
+            RecyclerView.LayoutManager manager = new GridLayoutManager(this, 4);
+            recyclerviewTab.setLayoutManager(manager);
         }
-        RecyclerView.LayoutManager manager = new GridLayoutManager(this, 4);
-        recyclerviewTab.setLayoutManager(manager);
 
         adapter = new MyGridAdapter();
         recyclerviewTab.setAdapter(adapter);
@@ -366,9 +374,9 @@ public class UnSoldMarketActivity extends BaseActivity {
                     ptrWrapper.autoRefresh();
                     mPopup.dismiss();
 
+
                 }
             });
-
 
         } else if (currentView == 1) {
             adapter.addDatas(kindList);
@@ -465,7 +473,7 @@ public class UnSoldMarketActivity extends BaseActivity {
             }
         });
 
-        mPopup = new PopupWindow(inflate, ViewGroup.LayoutParams.MATCH_PARENT, 600, false);
+        mPopup = new PopupWindow(inflate, ViewGroup.LayoutParams.MATCH_PARENT, 800, false);
 
 
         /** 设置背景 */

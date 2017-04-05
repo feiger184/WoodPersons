@@ -1,6 +1,7 @@
 package com.jywy.woodpersons;
 
 import android.app.Notification;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.jywy.woodpersons.commons.ActivityUtils;
+import com.jywy.woodpersons.network.UserPrefs;
 import com.jywy.woodpersons.network.WoodPersonsClient;
 import com.jywy.woodpersons.soft_update.AppVersion;
 import com.jywy.woodpersons.soft_update.UnpdateMessage;
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         unbinder = ButterKnife.bind(this);
         activityUtils = new ActivityUtils(this);
+
         initView();
 
     }

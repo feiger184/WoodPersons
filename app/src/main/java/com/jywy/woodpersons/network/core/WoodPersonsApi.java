@@ -9,6 +9,8 @@ import com.jywy.woodpersons.network.entity.RailwayGoodsPlaceRsp;
 import com.jywy.woodpersons.network.entity.RailwayGoodsRsp;
 import com.jywy.woodpersons.network.entity.UnSoldMarketListRsp;
 import com.jywy.woodpersons.network.entity.UnSoldMarketRsp;
+import com.jywy.woodpersons.network.entity.UserRegisterCodeRsp;
+import com.jywy.woodpersons.network.entity.UserRegisterSuccessRsp;
 import com.jywy.woodpersons.network.entity.WoodBuyInfoRsp;
 import com.jywy.woodpersons.network.entity.WoodBuyRsp;
 import com.jywy.woodpersons.soft_update.AppVersion;
@@ -19,6 +21,8 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 
+import static android.R.attr.password;
+
 
 /**
  * Created by 高 on 2017/3/21.
@@ -26,6 +30,23 @@ import retrofit2.http.Part;
 
 public interface WoodPersonsApi {
 
+    /*
+       index.php/Mcrapp/Index/sendvalidsms
+       phone
+       index.php/Mcrapp/Index/userregister*/
+    //注册发送验证码
+    @Multipart
+    @POST("Index/sendvalidsms")
+    Call<UserRegisterCodeRsp> getRegisterCode(@Part("phone") String phone);
+    //注册成功 收到userid
+    @Multipart
+    @POST("Index/userregister")
+    Call<UserRegisterSuccessRsp> getRegisterUserId(@Part("phone") String phone);
+
+//
+//    index.php/Mcrapp/Index/userlogin
+//            登录  mid5加密
+//    phone ,password
 
     //    http://dev.sxuav.com/index.php/Mcrapp/Index/arrivelist_lie?portid=1&userid=8
     //portid=1表示满洲里口岸，userid=8需要替换成登录用户的id

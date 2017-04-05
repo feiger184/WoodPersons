@@ -16,6 +16,7 @@ import com.jywy.woodpersons.base.BaseActivity;
 import com.jywy.woodpersons.base.PtrWrapper;
 import com.jywy.woodpersons.base.wrapper.ToolbarWrapper;
 import com.jywy.woodpersons.commons.ActivityUtils;
+import com.jywy.woodpersons.network.UserPrefs;
 import com.jywy.woodpersons.network.WoodPersonsClient;
 import com.jywy.woodpersons.network.entity.RailwayGoodsListRsp;
 
@@ -117,7 +118,7 @@ public class RailwayTrainListActivity extends BaseActivity {
     private void searchTrain(final boolean isRefresh) {
 
         trainCall = WoodPersonsClient.getInstance().getWoodPersonsApi()
-                .getRailwayGoodsList(1, 1, train, timeDate, 8);
+                .getRailwayGoodsList(1, 1, train, timeDate, UserPrefs.getInstance().getUserid());
         trainCall.enqueue(new Callback<RailwayGoodsListRsp>() {
 
             @Override

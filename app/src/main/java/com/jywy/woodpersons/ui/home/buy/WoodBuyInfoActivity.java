@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.jywy.woodpersons.R;
 import com.jywy.woodpersons.base.BaseActivity;
 import com.jywy.woodpersons.commons.ActivityUtils;
+import com.jywy.woodpersons.network.UserPrefs;
 import com.jywy.woodpersons.network.WoodPersonsClient;
 import com.jywy.woodpersons.network.entity.WoodBuyInfo;
 import com.jywy.woodpersons.network.entity.WoodBuyInfoRsp;
@@ -108,7 +109,7 @@ public class WoodBuyInfoActivity extends BaseActivity {
 
     private void getWoodBuyInfo(String buyId) {
 
-        Call<WoodBuyInfoRsp> woodBuyInfo = WoodPersonsClient.getInstance().getWoodPersonsApi().getWoodBuyInfo(Integer.valueOf(buyId), 8);
+        Call<WoodBuyInfoRsp> woodBuyInfo = WoodPersonsClient.getInstance().getWoodPersonsApi().getWoodBuyInfo(Integer.valueOf(buyId), UserPrefs.getInstance().getUserid());
         woodBuyInfo.enqueue(new Callback<WoodBuyInfoRsp>() {
             @Override
             public void onResponse(Call<WoodBuyInfoRsp> call, Response<WoodBuyInfoRsp> response) {

@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<com.jywy.woodpersons.commons.PercentLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/layout_Width"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
+        android:weightSum="2"
+        app:layout_widthPercent="70%"
+        app:layout_marginLeftPercent="15%"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="宽度"/>
 
@@ -23,15 +27,17 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:lines="1"
+            android:background="@drawable/shape_liuyan"
             android:inputType="number"
+            android:layout_margin="5dp"
+
             android:gravity="center"
             android:hint="10~500"
             />
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="至"/>
 
@@ -42,19 +48,23 @@
             android:layout_weight="1"
             android:lines="1"
             android:inputType="number"
+            android:background="@drawable/shape_liuyan"
+            android:layout_margin="5dp"
+
             android:gravity="center"
             android:hint="10~500"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
+        app:layout_widthPercent="70%"
+        app:layout_marginLeftPercent="15%"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="厚度"/>
 
@@ -65,14 +75,15 @@
             android:inputType="number"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/shape_liuyan"
+            android:layout_margin="5dp"
             android:gravity="center"
             android:hint="10~500"
             />
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="至"/>
 
@@ -82,6 +93,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:background="@drawable/shape_liuyan"
+            android:layout_margin="5dp"
             android:lines="1"
             android:inputType="number"
             android:hint="10~500"/>
@@ -93,4 +106,4 @@
         android:gravity="center"
         android:text="请按毫米（mm）输入"/>
 
-</LinearLayout>
+</com.jywy.woodpersons.commons.PercentLinearLayout>
