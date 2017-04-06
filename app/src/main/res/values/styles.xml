@@ -40,5 +40,9 @@
     <style name="ContentText.Large">
         <item name="android:textSize">@dimen/font_large</item>
     </style>
-
+    <style name="toolbar_white_theme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:homeAsUpIndicator">@drawable/ic_back_jt</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="android:actionBarSize">62dp</item>
+    </style>
 </resources>

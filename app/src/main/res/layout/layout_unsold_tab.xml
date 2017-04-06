@@ -9,32 +9,61 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/lengthlayout"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="30dp"
-            android:gravity="center_vertical"
-            android:text="长度"/>
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lengthlayout"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="长度"
+                android:textColor="#151515"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tv_unslod_none"
+                android:layout_width="75dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="15dp"
+                android:gravity="center"
+                android:text="不限"
+                android:background="@color/unsold_tab_textcolor_unpitch"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview_unsold_tab"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
 
         <include
             android:id="@+id/tv_width_height"
-            layout="@layout/layout_unsold_width_height"/>
+            layout="@layout/layout_unsold_width_height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <include
             android:id="@+id/tv_jingji"
-            layout="@layout/layout_unsold_jingji"/>
+            layout="@layout/layout_unsold_jingji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/btn_length_commit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
-            android:background="#0bf207"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_unsold"
             android:text="确认"
             android:textColor="#fff"/>
     </LinearLayout>

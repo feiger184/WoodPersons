@@ -295,8 +295,8 @@ public class HomeFragment extends BaseFragment {
 
         //设置布局管理器为2列，纵向
         mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        mAdapter = new UnsoldAdapter(getContext(), list);
         mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new UnsoldAdapter(getContext(), list);
         mRecyclerView.setAdapter(mAdapter);
 
         for (int i = 0; i < 4; i++) {

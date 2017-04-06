@@ -17,8 +17,9 @@ import java.util.List;
 
 public class MyGridAdapter extends RecyclerView.Adapter<MyGridAdapter.MainViewHolder> {
 
-
     private List<String> mData = new ArrayList<>();
+
+    private int selPosition = 10001;
 
     public void addDatas(List<String> mData) {
         this.mData = mData;
@@ -37,19 +38,34 @@ public class MyGridAdapter extends RecyclerView.Adapter<MyGridAdapter.MainViewHo
         notifyDataSetChanged();
     }
 
+
     @Override
     public void onBindViewHolder(final MainViewHolder holder, final int position) {
         holder.textView.setText(mData.get(position));
+        holder.textView_pitch.setText(mData.get(position));
+        holder.itemView.setTag(position);
 
+        if (position > 10000) {
+            return;
+        }
+        if (position == selPosition) {
+            ((MainViewHolder)holder).textView.setVisibility(View.GONE);
+            ((MainViewHolder)holder).textView_pitch.setVisibility(View.VISIBLE);
+        } else {
+            ((MainViewHolder)holder).textView.setVisibility(View.VISIBLE);
+            ((MainViewHolder)holder).textView_pitch.setVisibility(View.GONE);
+        }
 
         // ####################   item点击事件   #################
         if (onItemClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    holder.textView.setVisibility(View.GONE);
+                    holder.textView_pitch.setVisibility(View.VISIBLE);
+                    selPosition = Integer.parseInt(holder.itemView.getTag().toString());
+                    MyGridAdapter.this.notifyDataSetChanged();
                     onItemClickListener.onItemClick(holder.itemView, position);
-                    int color = v.getResources().getColor(R.color.unsold_tab_textcolor);
-                    holder.textView.setBackgroundColor(color);
                 }
             });
 
@@ -61,12 +77,14 @@ public class MyGridAdapter extends RecyclerView.Adapter<MyGridAdapter.MainViewHo
         return mData.size();
     }
 
-    class MainViewHolder extends RecyclerView.ViewHolder {
+    public class MainViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
+        TextView textView_pitch;
 
         public MainViewHolder(View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.tv_recycler_unsold_text);
+            textView_pitch = (TextView) itemView.findViewById(R.id.tv_recycler_unsold_text_pitch);
         }
     }
 

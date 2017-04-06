@@ -9,6 +9,9 @@ import com.jywy.woodpersons.network.entity.RailwayGoodsPlaceRsp;
 import com.jywy.woodpersons.network.entity.RailwayGoodsRsp;
 import com.jywy.woodpersons.network.entity.UnSoldMarketListRsp;
 import com.jywy.woodpersons.network.entity.UnSoldMarketRsp;
+import com.jywy.woodpersons.network.entity.UserLoginRsp;
+import com.jywy.woodpersons.network.entity.UserRegisterCodeRsp;
+import com.jywy.woodpersons.network.entity.UserRegisterSuccessRsp;
 import com.jywy.woodpersons.network.entity.WoodBuyInfoRsp;
 import com.jywy.woodpersons.network.entity.WoodBuyRsp;
 import com.jywy.woodpersons.soft_update.AppVersion;
@@ -19,12 +22,36 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 
+import static android.R.attr.password;
+
 
 /**
  * Created by 高 on 2017/3/21.
  */
 
 public interface WoodPersonsApi {
+
+    /*
+       index.php/Mcrapp/Index/sendvalidsms
+       phone
+       index.php/Mcrapp/Index/userregister*/
+    //注册发送验证码
+    @Multipart
+    @POST("Index/sendvalidsms")
+    Call<UserRegisterCodeRsp> getRegisterCode(@Part("phone") String phone);
+
+    //注册成功 收到userid
+    @Multipart
+    @POST("Index/userregister")
+    Call<UserRegisterSuccessRsp> getRegisterUserId(@Part("phone") String phone);
+
+
+
+//      登录  mid5加密
+//    phone ,password
+    @Multipart
+    @POST("Index/userlogin")
+    Call<UserLoginRsp> getLoginInfo(@Part("phone") String phone, @Part("password") String password);
 
 
     //    http://dev.sxuav.com/index.php/Mcrapp/Index/arrivelist_lie?portid=1&userid=8
@@ -48,10 +75,10 @@ public interface WoodPersonsApi {
     @POST("Index/arrivelistdetail")
     Call<RailwayGoodsListRsp> getRailwayGoodsList(@Part("trainsign") int trainsign, @Part("portid") int portid, @Part("train") String train, @Part("traindate") String traindate, @Part("userid") int userid);
 
-// trainsign=0&displaysign=0&portid=1&spotpositionid=3
+    // trainsign=0&displaysign=0&portid=1&spotpositionid=3
     @Multipart
     @POST("Index/arrivelistdetail")
-    Call<RailwayGoodsListRsp> getRailwayGoodsListPlace(@Part("trainsign") int trainsign, @Part("displaysign") int displaysign, @Part("portid") String portid, @Part("spotpositionid") int spotpositionid, @Part("userid") int userid);
+    Call<RailwayGoodsListRsp> getRailwayGoodsListPlace(@Part("trainsign") int trainsign, @Part("displaysign") int displaysign, @Part("portid") int portid, @Part("spotpositionid") int spotpositionid, @Part("userid") int userid);
 
     //    车皮详情页
 //    http://dev.sxuav.com/index.php/Mcrapp/Index/productdetail?cdkey=1504813544417022111050918453212641&userid=8

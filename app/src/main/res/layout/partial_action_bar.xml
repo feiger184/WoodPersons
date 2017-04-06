@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:theme="@style/toolbar_white_theme"
     app:elevation="@dimen/elevation_app_bar">
 
     <android.support.v7.widget.Toolbar
@@ -15,7 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="62dp"
         android:background="#33C147"
-        app:theme="@style/Widget.AppCompat.Toolbar"
         tools:ignore="Overdraw"
         android:weightSum="1">
 

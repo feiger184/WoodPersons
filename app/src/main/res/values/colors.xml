@@ -23,4 +23,6 @@
     <color name="railway_top_tab_textcolor_2">#ffffff</color>
     <color name="railway_top_tab_bacgroudcolor_2">#BDEAFF</color>
     <color name="unsold_tab_textcolor">#14d640</color>
+    <color name="unsold_tab_textcolor_unpitch">#d9d6d1</color>
+
 </resources>

@@ -26,6 +26,7 @@ import com.jywy.woodpersons.base.BaseActivity;
 import com.jywy.woodpersons.base.PtrWrapper;
 import com.jywy.woodpersons.base.wrapper.ToolbarWrapper;
 import com.jywy.woodpersons.commons.ActivityUtils;
+import com.jywy.woodpersons.network.UserPrefs;
 import com.jywy.woodpersons.network.WoodPersonsClient;
 import com.jywy.woodpersons.network.entity.UnSoldMarketKind;
 import com.jywy.woodpersons.network.entity.UnSoldMarketLength;
@@ -84,8 +85,6 @@ public class WoodBuy extends BaseActivity {
     private int currentView;
     private WoodBuyTabAdapter adapter;
     private int produtlen = 0;//转换
-
-
     int wide = 0;
     int wideMax = 0;
     int thinckness = 0;
@@ -108,7 +107,6 @@ public class WoodBuy extends BaseActivity {
                 addDataToList();//将Tab数据放入集合中
             }
             if (msg.what == 2) {
-
                 WoodBuyRsp body = (WoodBuyRsp) msg.obj;
                 woodBuyMarkets = body.getWoodBuyMarkets();
 
@@ -152,7 +150,7 @@ public class WoodBuy extends BaseActivity {
 
     //加载Tab标签数据
     private void LoadListTabData() {
-        Call<UnSoldMarketListRsp> unWoodBuyListTab = WoodPersonsClient.getInstance().getWoodPersonsApi().getUnSoldMarketListTab(8);
+        Call<UnSoldMarketListRsp> unWoodBuyListTab = WoodPersonsClient.getInstance().getWoodPersonsApi().getUnSoldMarketListTab(UserPrefs.getInstance().getUserid());
         unWoodBuyListTab.enqueue(new Callback<UnSoldMarketListRsp>() {
             @Override
             public void onResponse(Call<UnSoldMarketListRsp> call, Response<UnSoldMarketListRsp> response) {
@@ -213,7 +211,7 @@ public class WoodBuy extends BaseActivity {
             woodBuyEntityCall.cancel();
         }
         woodBuyEntityCall = WoodPersonsClient.getInstance().getWoodPersonsApi()
-                .getWoodBuyMarket(portId, kindid, stuffid, productlen, pagenum, 8,
+                .getWoodBuyMarket(portId, kindid, stuffid, productlen, pagenum, UserPrefs.getInstance().getUserid(),
                         wide, wideMax, thinckness, thincknessMax, diamterlen,
                         diamterlenMax);
         woodBuyEntityCall.enqueue(new Callback<WoodBuyRsp>() {
@@ -239,6 +237,8 @@ public class WoodBuy extends BaseActivity {
                             listWoodBuyGoods.setAdapter(woodBuyAdapter);
                             woodBuyAdapter.addAll(woodBuyMarkets);
                             pagenum++;
+                            listWoodBuyGoods.setSelection(woodBuyAdapter.getCount()-11);
+                            woodBuyAdapter.notifyDataSetChanged();
                         }
                     }
 
@@ -338,9 +338,14 @@ public class WoodBuy extends BaseActivity {
             leghtlay.setVisibility(View.GONE);
             widthHeight.setVisibility(View.GONE);
             btncommit.setVisibility(View.GONE);
+
+            RecyclerView.LayoutManager manager = new GridLayoutManager(this, 2);
+            recyclerviewTab.setLayoutManager(manager);
+        } else {
+
+            RecyclerView.LayoutManager manager = new GridLayoutManager(this, 4);
+            recyclerviewTab.setLayoutManager(manager);
         }
-        RecyclerView.LayoutManager manager = new GridLayoutManager(this, 4);
-        recyclerviewTab.setLayoutManager(manager);
 
         adapter = new WoodBuyTabAdapter();
         recyclerviewTab.setAdapter(adapter);
@@ -349,7 +354,7 @@ public class WoodBuy extends BaseActivity {
         }
         if (currentView == 0) {
             adapter.addDatas(portList);
-            adapter.setOnItemClickListener(new MyGridAdapter.OnItemClickListener() {
+            adapter.setOnItemClickListener(new WoodBuyTabAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int postion) {
                     if (postion == 0) {
@@ -367,7 +372,7 @@ public class WoodBuy extends BaseActivity {
 
         } else if (currentView == 1) {
             adapter.addDatas(kindList);
-            adapter.setOnItemClickListener(new MyGridAdapter.OnItemClickListener() {
+            adapter.setOnItemClickListener(new WoodBuyTabAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int postion) {
                     if (postion == 0) {
@@ -385,7 +390,7 @@ public class WoodBuy extends BaseActivity {
 
         } else if (currentView == 2) {
             adapter.addDatas(stuffidList);
-            adapter.setOnItemClickListener(new MyGridAdapter.OnItemClickListener() {
+            adapter.setOnItemClickListener(new WoodBuyTabAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int postion) {
                     if (postion == 0) {
@@ -406,9 +411,13 @@ public class WoodBuy extends BaseActivity {
                 widthHeight.setVisibility(View.GONE);
 
             }
+            if (textViews[1].getText().toString().equals("货种")) {
+                jingJi.setVisibility(View.GONE);
+                widthHeight.setVisibility(View.GONE);
+            }
 
             adapter.addDatas(lengthList);
-            adapter.setOnItemClickListener(new MyGridAdapter.OnItemClickListener() {
+            adapter.setOnItemClickListener(new WoodBuyTabAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int postion) {
                     produtlen = Integer.valueOf(unSoldMarketLength.get(postion).getLenId());
@@ -519,12 +528,11 @@ public class WoodBuy extends BaseActivity {
 
 
     @OnItemClick(R.id.list_wood_buy)
-    public void JumpToInfo(int position) {
-        WoodBuyEntity woodBuyEntity = woodBuyMarkets.get(position);
+    public void JumpToInfoData(int position) {
+        WoodBuyEntity woodBuyEntity = woodBuyAdapter.getItem(position);
         String buyId = woodBuyEntity.getBuyId();
         Intent startIntent = WoodBuyInfoActivity.getStartIntent(WoodBuy.this, buyId);
         startActivity(startIntent);
-
     }
 
     @Override

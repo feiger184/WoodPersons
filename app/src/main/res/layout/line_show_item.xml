@@ -50,6 +50,11 @@
         android:gravity="center"
         android:textColor="#151515"
         android:text="板材30"/>
-
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/ic_railway_line_jt"/>
 
 </LinearLayout>

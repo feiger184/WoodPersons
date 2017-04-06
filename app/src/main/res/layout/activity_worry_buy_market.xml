@@ -29,7 +29,7 @@
             android:drawableRight="@drawable/ic_keyboard_arrow_down"
             android:gravity="center"
             android:text="区域"
-            android:textColor="#000"/>
+            android:textColor="#151515"/>
 
 
         <TextView
@@ -41,7 +41,7 @@
             android:drawableRight="@drawable/ic_keyboard_arrow_down"
             android:gravity="center"
             android:text="货种"
-            android:textColor="#000"/>
+            android:textColor="#151515"/>
 
         <TextView
             android:id="@+id/tv_buy_tree"
@@ -52,7 +52,7 @@
             android:drawableRight="@drawable/ic_keyboard_arrow_down"
             android:gravity="center"
             android:text="树种"
-            android:textColor="#000"/>
+            android:textColor="#151515"/>
 
         <TextView
             android:id="@+id/tv_buy_more"
@@ -63,14 +63,14 @@
             android:drawableRight="@drawable/ic_keyboard_arrow_down"
             android:gravity="center"
             android:text="更多"
-            android:textColor="#000"/>
+            android:textColor="#151515"/>
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="#f5f5f5"/>
+        android:background="#e5e5e5"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -112,15 +112,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/shape_unsold"
+            android:background="#32C248"
             android:gravity="center"
             android:text="求购发布"
             android:textColor="#fff"
-            android:textSize="18sp"
-            app:layout_heightPercent="80%"
-            app:layout_marginLeftPercent="15%"
-            app:layout_marginTopPercent="10%"
-            app:layout_widthPercent="70%"/>
+            android:textSize="18sp"/>
     </android.support.percent.PercentRelativeLayout>
 
 </com.jywy.woodpersons.commons.PercentLinearLayout>

@@ -18,12 +18,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/unsold_img"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
-                fresco:actualImageScaleType="centerCrop"
-                />
+                android:layout_height="wrap_content">
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/unsold_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    fresco:actualImageScaleType="centerCrop"
+                    />
+                <ImageView
+                    android:id="@+id/navigmaske"
+                    android:layout_width="50dp"
+                    android:layout_height="25dp"
+                    android:background="#0000"
+                    android:src="@drawable/ic_hunzhuang"
+                    android:scaleType="fitXY"
+                    android:layout_alignTop="@id/unsold_img"
+                    android:layout_alignLeft="@id/unsold_img"/>
+            </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

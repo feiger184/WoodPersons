@@ -1,70 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_railway_train_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.jywy.woodpersons.ui.home.railway.RailwayTrainListActivity">
+    android:orientation="vertical">
 
     <include
         layout="@layout/partial_action_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <LinearLayout
+    <include layout="@layout/layout_railway_list"/>
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="车皮号"
-            android:textColor="#151515"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="长度"
-            android:textColor="#151515"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="树种"
-            android:textColor="#151515"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="规格"
-            android:textColor="#151515"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/board_wood"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="手机号"
-            android:textColor="#151515"
-            android:textStyle="bold"/>
-    </LinearLayout>
-
+        android:layout_height="5dp"
+        android:background="#f9f9f9"/>
 
     <!--第三方控件：刷新加载-->
     <in.srain.cube.views.ptr.PtrFrameLayout

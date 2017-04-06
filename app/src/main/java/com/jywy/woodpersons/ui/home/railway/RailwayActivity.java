@@ -1,6 +1,7 @@
 package com.jywy.woodpersons.ui.home.railway;
 
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.TextView;
@@ -59,11 +60,11 @@ public class RailwayActivity extends BaseActivity {
     public void onclick(View view) {
         switch (view.getId()) {
             case R.id.tv_text_nzh:
-                activityUtils.startActivity(RailwayActivitySecond.class);
+                Intent startIntent = RailwayActivitySecond.getStartIntent(RailwayActivity.this, 1);
+                startActivity(startIntent);
                 break;
             case R.id.tv_text_erenhot:
                 activityUtils.showToast("待实现。。。");
-
                 break;
 
             case R.id.tv_text_suifenhe:

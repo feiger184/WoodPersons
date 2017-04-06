@@ -90,21 +90,32 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
         </activity>
-
         <activity
             android:name=".ui.home.buy.WoodBuy"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
         </activity>
-
-
-        <activity android:name=".ui.home.unsold.UnSoldMarketActivity"
-                  android:launchMode="singleTop"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.home.unsold.UnSoldMarketActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.home.buy.WoodBuyInfoActivity"
-                  android:launchMode="singleTop"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.home.buy.WoodBuyInfoActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.home.railway.RailwayGoodsInfoPictureActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.user.register.RegisterActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.user.login.LoginActivity"
+            android:screenOrientation="portrait">
         </activity>
 
         <!-- Required SDK 核心功能 -->
@@ -196,7 +207,6 @@
             android:name=".base.MyReceiver"
             android:enabled="true">
             <intent-filter>
-
                 <!-- Required 用户注册SDK的intent -->
                 <action android:name="cn.jpush.android.intent.REGISTRATION"/>
                 <!-- Required 用户接收SDK消息的intent -->
@@ -226,7 +236,10 @@
             android:name="JPUSH_APPKEY"
             android:value="194e0e08fc4066b584e03a1b"/>
 
+        <activity android:name=".ui.user.RegisterOrLoginActivity">
+        </activity>
+        <activity android:name=".ui.home.railway.RailwayTrainListPlaceActivity">
+        </activity>
 
     </application>
-
 </manifest>

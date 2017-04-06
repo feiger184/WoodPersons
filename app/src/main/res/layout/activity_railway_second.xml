@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     android:orientation="vertical">
 
     <include
@@ -54,18 +54,23 @@
         android:weightSum="2">
 
         <View
+            android:id="@+id/layout_left"
             android:layout_width="146dp"
             android:layout_height="3dp"
-            android:layout_weight="1"
-            android:background="#83D78C"/>
+            android:background="@color/unsold_tab_textcolor"
+            android:layout_weight="1" />
 
         <View
+            android:id="@+id/layout_right"
             android:layout_width="146dp"
             android:layout_height="3dp"
-            android:layout_weight="1"
-            android:background="#fff"/>
+            android:layout_weight="1" />
 
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#f9f9f9"/>
 
     <!--第三方控件：刷新加载-->
 

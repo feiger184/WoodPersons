@@ -6,6 +6,7 @@ import android.widget.TextView;
 import com.jywy.woodpersons.R;
 import com.jywy.woodpersons.base.BaseListAdapter;
 import com.jywy.woodpersons.network.entity.RailwayGoods;
+import com.jywy.woodpersons.network.entity.RailwayGoodsPlace;
 
 import butterknife.BindView;
 
@@ -13,7 +14,7 @@ import butterknife.BindView;
  * Created by 高 on 2017/3/22.
  */
 
-public class RailwayPlaceAdapter extends BaseListAdapter<RailwayGoods, RailwayPlaceAdapter.MyViewHolder> {
+public class RailwayPlaceAdapter extends BaseListAdapter<RailwayGoodsPlace, RailwayPlaceAdapter.MyViewHolder> {
 
 
     @Override
@@ -42,10 +43,10 @@ public class RailwayPlaceAdapter extends BaseListAdapter<RailwayGoods, RailwayPl
 
         @Override
         protected void bind(int position) {
-            tv_place.setText(getItem(position).getArriveTime());
-            tv_total.setText(getItem(position).getGoodsCount());
-            tv_raw_wood.setText(getItem(position).getLogWood());
-            tv_board_wood.setText(getItem(position).getBoardWood());
+            tv_place.setText(getItem(position).getPositionName());
+            tv_total.setText(getItem(position).getCapaCity());
+            tv_raw_wood.setText(getItem(position).getLogSize());
+            tv_board_wood.setText(getItem(position).getBoardSize());
         }
     }
 

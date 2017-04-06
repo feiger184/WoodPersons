@@ -5,7 +5,6 @@ import android.widget.TextView;
 
 import com.jywy.woodpersons.R;
 import com.jywy.woodpersons.base.BaseListAdapter;
-import com.jywy.woodpersons.network.entity.RailwayGoodsList;
 import com.jywy.woodpersons.network.entity.RailwayGoodsListRsp;
 
 import butterknife.BindView;

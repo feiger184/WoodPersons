@@ -77,14 +77,14 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="#ccc"/>
+        android:background="#e5e5e5"/>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        app:layout_heightPercent="74%">
+        app:layout_heightPercent="73%">
 
         <!--第三方控件：刷新加载-->
         <in.srain.cube.views.ptr.PtrFrameLayout
