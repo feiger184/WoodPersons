@@ -31,6 +31,7 @@ public class WoodPersonsApiTest {
 
     }
 
+//    http://dev.sxuav.com/index.php/Home/Index/showproductdetail.html?cdkey=1864498551417022012572043713205382
     @Test
     public void getRailwayGoodsListPlace() throws Exception {
         Call<RailwayGoodsListRsp> railwayGoodsList = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayGoodsListPlace(0, 1, 1, 51, 8);

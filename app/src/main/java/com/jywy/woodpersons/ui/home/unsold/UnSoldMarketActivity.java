@@ -1,7 +1,6 @@
 package com.jywy.woodpersons.ui.home.unsold;
 
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,10 +9,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -27,7 +26,6 @@ import com.jywy.woodpersons.base.BaseActivity;
 import com.jywy.woodpersons.base.PtrWrapper;
 import com.jywy.woodpersons.base.wrapper.ToolbarWrapper;
 import com.jywy.woodpersons.commons.ActivityUtils;
-import com.jywy.woodpersons.network.UserPrefs;
 import com.jywy.woodpersons.network.WoodPersonsClient;
 import com.jywy.woodpersons.network.entity.UnSoldMarket;
 import com.jywy.woodpersons.network.entity.UnSoldMarketKind;
@@ -91,7 +89,7 @@ public class UnSoldMarketActivity extends BaseActivity {
     private List<String> kindList = new ArrayList<>();
     private List<String> stuffidList = new ArrayList<>();
     private List<String> lengthList = new ArrayList<>();
-    private int produtlen = 0;
+
 
     private Handler handler = new Handler() {
         @Override
@@ -120,8 +118,7 @@ public class UnSoldMarketActivity extends BaseActivity {
 
 
     };
-    private String lenName;
-
+    private int produtlen = 0;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -192,7 +189,7 @@ public class UnSoldMarketActivity extends BaseActivity {
         }
 
         unSoldMarketRspCall = WoodPersonsClient.getInstance().getWoodPersonsApi()
-                .getUnSoldMarket(portId, kindid, stuffid, productlen, pagenum, UserPrefs.getInstance().getUserid(),
+                .getUnSoldMarket(portId, kindid, stuffid, productlen, pagenum, 8,
                         wide, wideMax, thinckness, thincknessMax, diamterlen,
                         diamterlenMax);
         unSoldMarketRspCall.enqueue(new Callback<UnSoldMarketRsp>() {
@@ -219,8 +216,6 @@ public class UnSoldMarketActivity extends BaseActivity {
                             listUnsoldGoods.setAdapter(unSoldMarketAdapter);
                             unSoldMarketAdapter.addAll(unSoldMarkets);
                             pagenum++;
-                            listUnsoldGoods.setSelection(unSoldMarketAdapter.getCount() - 11);
-                            unSoldMarketAdapter.notifyDataSetChanged();
                         }
                     }
                 }
@@ -291,7 +286,7 @@ public class UnSoldMarketActivity extends BaseActivity {
 
     //加载Tab标签数据
     private void LoadListTabData() {
-        Call<UnSoldMarketListRsp> unSoldMarketListTab = WoodPersonsClient.getInstance().getWoodPersonsApi().getUnSoldMarketListTab(UserPrefs.getInstance().getUserid());
+        Call<UnSoldMarketListRsp> unSoldMarketListTab = WoodPersonsClient.getInstance().getWoodPersonsApi().getUnSoldMarketListTab(8);
         unSoldMarketListTab.enqueue(new Callback<UnSoldMarketListRsp>() {
             @Override
             public void onResponse(Call<UnSoldMarketListRsp> call, Response<UnSoldMarketListRsp> response) {
@@ -324,10 +319,9 @@ public class UnSoldMarketActivity extends BaseActivity {
         diamterlen = 0;
         diamterlenMax = 0;
         View inflate = LayoutInflater.from(this).inflate(R.layout.layout_unsold_tab, null);
-        final RecyclerView recyclerviewTab = (RecyclerView) inflate.findViewById(R.id.recyclerview_unsold_tab);
+        RecyclerView recyclerviewTab = (RecyclerView) inflate.findViewById(R.id.recyclerview_unsold_tab);
         final TextView leghtlay = (TextView) inflate.findViewById(R.id.lengthlayout);
         LinearLayout widthHeight = (LinearLayout) inflate.findViewById(R.id.tv_width_height);
-        final TextView tvUnslodNone = (TextView) inflate.findViewById(R.id.tv_unslod_none);
         final LinearLayout jingJi = (LinearLayout) inflate.findViewById(R.id.tv_jingji);
         jingJi.setVisibility(View.GONE);
         final EditText etWideMin = (EditText) inflate.findViewById(R.id.etWideMin);
@@ -349,13 +343,9 @@ public class UnSoldMarketActivity extends BaseActivity {
             leghtlay.setVisibility(View.GONE);
             widthHeight.setVisibility(View.GONE);
             btncommit.setVisibility(View.GONE);
-            tvUnslodNone.setVisibility(View.GONE);
-            RecyclerView.LayoutManager manager = new GridLayoutManager(this, 2);
-            recyclerviewTab.setLayoutManager(manager);
-        } else {
-            RecyclerView.LayoutManager manager = new GridLayoutManager(this, 4);
-            recyclerviewTab.setLayoutManager(manager);
         }
+        RecyclerView.LayoutManager manager = new GridLayoutManager(this, 4);
+        recyclerviewTab.setLayoutManager(manager);
 
         adapter = new MyGridAdapter();
         recyclerviewTab.setAdapter(adapter);
@@ -376,9 +366,9 @@ public class UnSoldMarketActivity extends BaseActivity {
                     ptrWrapper.autoRefresh();
                     mPopup.dismiss();
 
-
                 }
             });
+
 
         } else if (currentView == 1) {
             adapter.addDatas(kindList);
@@ -414,17 +404,11 @@ public class UnSoldMarketActivity extends BaseActivity {
                 }
             });
 
+
         } else if (currentView == 3) {
             if (textViews[1].getText().toString().equals("原木")) {
                 jingJi.setVisibility(View.VISIBLE);
                 widthHeight.setVisibility(View.GONE);
-
-            }
-            if (textViews[1].getText().toString().equals("货种")) {
-                jingJi.setVisibility(View.GONE);
-                widthHeight.setVisibility(View.GONE);
-            }
-            if (!(textViews[3].getText().toString().equals("更多"))) {
 
             }
 
@@ -433,105 +417,57 @@ public class UnSoldMarketActivity extends BaseActivity {
                 @Override
                 public void onItemClick(View view, int postion) {
                     produtlen = Integer.valueOf(unSoldMarketLength.get(postion).getLenId());
-                    lenName = unSoldMarketLength.get(postion).getLenName();
-                    tvUnslodNone.setBackgroundColor(getResources().getColor(R.color.unsold_tab_textcolor_unpitch));
+
                 }
             });
 
-            tvUnslodNone.setOnClickListener(new View.OnClickListener() {
-                int state;
-
-                @Override
-                public void onClick(View v) {
-                    switch (v.getId()) {
-                        case R.id.tv_unslod_none:
-                            switch (state) {
-                                case 0:
-                                    tvUnslodNone.setBackgroundColor(getResources().getColor(R.color.unsold_tab_textcolor));
-                                    produtlen = 0;
-                                    state = 1;
-                                    break;
-                                case 1:
-                                    tvUnslodNone.setBackgroundColor(getResources().getColor(R.color.unsold_tab_textcolor_unpitch));
-                                    state = 0;
-                                    break;
-                            }
-                            break;
-                    }
-                }
-            });
         }
-
         btncommit.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View v) {
-                                             if (produtlen != 0) {
-                                                 textViews[3].setText(lenName);
-                                             } else {
-                                                 textViews[3].setText("更多");
-                                             }
-                                             productlen = produtlen;
-                                             if (etWideMin.getText().toString().equals("")) {
-                                                 wide = 0;
-                                             } else {
-                                                 wide = Integer.valueOf(etWideMin.getText().toString());
-                                             }
+            @Override
+            public void onClick(View v) {
+                productlen = produtlen;
+                if (etWideMin.getText().toString().equals("")) {
+                    wide = 0;
+                } else {
+                    wide = Integer.valueOf(etWideMin.getText().toString());
+                }
 
-                                             if (etWideMax.getText().toString().equals("")) {
-                                                 wideMax = 0;
-                                             } else {
-                                                 wideMax = Integer.valueOf(etWideMax.getText().toString());
-                                             }
+                if (etWideMax.getText().toString().equals("")) {
+                    wideMax = 0;
+                } else {
+                    wideMax = Integer.valueOf(etWideMax.getText().toString());
+                }
 
-                                             if (etHouduMin.getText().toString().equals("")) {
-                                                 thinckness = 0;
-                                             } else {
-                                                 thinckness = Integer.valueOf(etHouduMin.getText().toString());
-                                             }
+                if (etHouduMin.getText().toString().equals("")) {
+                    thinckness = 0;
+                } else {
+                    thinckness = Integer.valueOf(etHouduMin.getText().toString());
+                }
 
-                                             if (etHouduMax.getText().toString().equals("")) {
-                                                 wide = 0;
-                                             } else {
-                                                 thincknessMax = Integer.valueOf(etHouduMax.getText().toString());
-                                             }
-                                             if (etRadioMin.getText().toString().equals("")) {
-                                                 wide = 0;
-                                             } else {
-                                                 diamterlen = Integer.valueOf(etRadioMin.getText().toString());
-                                             }
-                                             if (etRadioMax.getText().toString().equals("")) {
-                                                 wide = 0;
-                                             } else {
-                                                 diamterlenMax = Integer.valueOf(etRadioMax.getText().toString());
-                                             }
-                                             mPopup.dismiss();
-                                             ptrWrapper.autoRefresh();
+                if (etHouduMax.getText().toString().equals("")) {
+                    wide = 0;
+                } else {
+                    thincknessMax = Integer.valueOf(etHouduMax.getText().toString());
+                }
+                if (etRadioMin.getText().toString().equals("")) {
+                    wide = 0;
+                } else {
+                    diamterlen = Integer.valueOf(etRadioMin.getText().toString());
+                }
+                if (etRadioMax.getText().toString().equals("")) {
+                    wide = 0;
+                } else {
+                    diamterlenMax = Integer.valueOf(etRadioMax.getText().toString());
+                }
+                mPopup.dismiss();
+                ptrWrapper.autoRefresh();
 
-                                         }
-                                     }
+            }
+        });
 
-        );
+        mPopup = new PopupWindow(inflate, ViewGroup.LayoutParams.MATCH_PARENT, 600, false);
 
-        mPopup = new PopupWindow(inflate, ViewGroup.LayoutParams.MATCH_PARENT, 800, false);
 
-        ColorDrawable cd = new ColorDrawable(0x000000);
-        mPopup.setBackgroundDrawable(cd);
-        //产生背景变暗效果
-        WindowManager.LayoutParams lp = getWindow().getAttributes();
-        lp.alpha = 0.4f;
-
-        getWindow().setAttributes(lp);
-
-        mPopup.setOnDismissListener(new PopupWindow.OnDismissListener() {
-                                        @Override
-                                        public void onDismiss() {
-                                            WindowManager.LayoutParams lp = getWindow().getAttributes();
-                                            lp.alpha = 1f;
-                                            getWindow().setAttributes(lp);
-                                        }
-                                    }
-
-        );
         /** 设置背景 */
         // 设置点击窗口外边窗口消失
         mPopup.setOutsideTouchable(true);

@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         app:layout_heightPercent="9%"/>
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -50,9 +49,11 @@
                     android:textColor="#000"/>
             </com.jywy.woodpersons.commons.PercentLinearLayout>
 
-            <include layout="@layout/layout_railway_info_banner"
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"/>
+                android:layout_height="wrap_content"
+                android:background="@drawable/meitu2"
+                app:layout_heightPercent="32%"/>
 
             <!--分享  关注  完善   举报   推入市场  刷新-->
             <LinearLayout
@@ -78,13 +79,12 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:text="分享"
-                    android:textColor="#151515"
                     android:textSize="15sp"/>
 
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/ic_uncollect"/>
@@ -96,13 +96,12 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:text="关注"
-                    android:textColor="#151515"
                     android:textSize="15sp"/>
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="15dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/perfect"/>
@@ -112,15 +111,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="0.87"
+                    android:layout_weight="0.67"
                     android:text="完善信息"
-                    android:textColor="#151515"
                     android:textSize="15sp"/>
 
                 <ImageView
                     android:layout_width="12dp"
                     android:layout_height="15dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/report"/>
@@ -132,16 +130,15 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:text="举报"
-                    android:textColor="#151515"
                     android:textSize="15sp"/>
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="1dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="#e5e5e5"/>
+                android:background="#f5f5f5"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -163,9 +160,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="0.17"
+                    android:layout_weight="0.28"
                     android:text="推入市场"
-                    android:textColor="#151515"
                     android:textSize="15sp"/>
 
                 <ImageView
@@ -180,9 +176,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:text="刷新"
-                    android:textColor="#151515"
                     android:textSize="15sp"/>
 
             </LinearLayout>
@@ -220,12 +215,9 @@
                 android:orientation="vertical">
                 <!--一-->
                 <LinearLayout
-                    android:id="@+id/layout_sanhuo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
@@ -236,10 +228,10 @@
 
                     <TextView
                         android:id="@+id/tv_info_train_number"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:textColor="#151515"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.94"
+                        android:textColor="#000"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -248,25 +240,23 @@
 
                     <TextView
                         android:id="@+id/tv_railway_type"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="#151515"/>
+                        android:textColor="#000"/>
                 </LinearLayout>
                 <!--二-->
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1px"
+                    android:layout_height="1dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="#e5e5e5"/>
+                    android:background="#f5f5f5"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
                     android:orientation="horizontal">
 
                     <ListView
@@ -277,17 +267,15 @@
                 <!--三-->
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1px"
+                    android:layout_height="1dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="#e5e5e5"/>
+                    android:background="#f5f5f5"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
@@ -298,10 +286,10 @@
 
                     <TextView
                         android:id="@+id/tv_info_portname"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:textColor="#151515"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.03"
+                        android:textColor="#000"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -310,25 +298,23 @@
 
                     <TextView
                         android:id="@+id/tv_info_current_position"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textColor="#FE7E01"/>
                 </LinearLayout>
                 <!--四-->
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1px"
+                    android:layout_height="1dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="#e5e5e5"/>
+                    android:background="#f5f5f5"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
@@ -339,9 +325,11 @@
 
                     <TextView
                         android:id="@+id/tv_info_reweight"
-                        android:layout_width="67dp"
-                        android:layout_height="match_parent"
-                        android:textColor="#151515"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.04"
+                        android:text="    "
+                        android:textColor="#000"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -351,26 +339,24 @@
 
                     <TextView
                         android:id="@+id/tv_info_update_time"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="#151515"/>
+                        android:textColor="#000"/>
                 </LinearLayout>
                 <!--五-->
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1px"
+                    android:layout_height="1dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="#e5e5e5"/>
+                    android:background="#f5f5f5"/>
 
                 <RelativeLayout
                     android:id="@+id/layout_company"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -381,7 +367,7 @@
 
                     <TextView
                         android:id="@+id/tv_info_company"
-                        android:layout_width="270dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_toEndOf="@+id/coord_one"
@@ -389,7 +375,6 @@
                         android:textColor="#000"/>
 
                     <ImageView
-                        android:id="@+id/open_or_close"
                         android:layout_width="17dp"
                         android:layout_height="17dp"
                         android:layout_alignParentBottom="true"
@@ -402,21 +387,20 @@
                     android:id="@+id/layout_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
+                        android:layout_height="1dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:background="#e5e5e5"/>
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -434,24 +418,22 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
+                        android:layout_height="1dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:background="#e5e5e5"/>
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="可能货主："
-                            android:textColor="#151515"/>
+                            android:textColor="#000"/>
 
                         <TextView
                             android:id="@+id/tv_owner_name"
@@ -476,27 +458,26 @@
                 android:id="@+id/btn_infomation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#f2f2f2">
+                android:background="#f5f5f5">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentTop="true"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="5dp"
                     android:padding="10dp"
-                    android:textColor="#151515"
                     android:text="详细信息"
                     android:textSize="18sp"/>
 
                 <ImageView
-                    android:id="@+id/pull_or_down"
+                    android:id="@+id/iv_pulldown"
                     android:layout_width="17dp"
                     android:layout_height="17dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginEnd="11dp"
                     android:layout_marginRight="11dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="22dp"
                     android:background="@drawable/info_open"/>
             </RelativeLayout>
             <!--详细页-->
@@ -509,23 +490,22 @@
                 android:weightSum="2">
                 <!--左-->
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginLeft="10dp"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="参考根数："/>
+                            android:text="参考根数："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_refer_number"
@@ -536,20 +516,20 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#e5e5e5"/>
+                        android:layout_height="1dp"
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="公差(mm)："/>
+                            android:text="公差(mm)："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_tolerance"
@@ -560,20 +540,20 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#e5e5e5"/>
+                        android:layout_height="1dp"
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="烘干："/>
+                            android:text="烘干："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_drying"
@@ -584,20 +564,20 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#e5e5e5"/>
+                        android:layout_height="1dp"
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="腐朽："/>
+                            android:text="腐朽："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_decayed"
@@ -608,20 +588,20 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#e5e5e5"/>
+                        android:layout_height="1dp"
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="新旧："/>
+                            android:text="新旧："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_ord_new"
@@ -632,20 +612,20 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#e5e5e5"/>
+                        android:layout_height="1dp"
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="斜裂："/>
+                            android:text="斜裂："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_oblique_fissure"
@@ -656,20 +636,20 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#e5e5e5"/>
+                        android:layout_height="1dp"
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="抽油："/>
+                            android:text="抽油："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_oil_pumping"
@@ -680,20 +660,20 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#e5e5e5"/>
+                        android:layout_height="1dp"
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="取材位置："/>
+                            android:text="取材位置："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_based_location"
@@ -704,20 +684,20 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#e5e5e5"/>
+                        android:layout_height="1dp"
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="加工设备："/>
+                            android:text="加工设备："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_processing_equipment"
@@ -728,23 +708,22 @@
                 </LinearLayout>
                 <!--右-->
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginRight="10dp"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="总货量："/>
+                            android:text="总货量："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_general_cargo"
@@ -755,20 +734,20 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#e5e5e5"/>
+                        android:layout_height="1dp"
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="爬皮："/>
+                            android:text="爬皮："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_bark"
@@ -779,20 +758,20 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#e5e5e5"/>
+                        android:layout_height="1dp"
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="虫眼："/>
+                            android:text="虫眼："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_wormhole"
@@ -803,20 +782,20 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#e5e5e5"/>
+                        android:layout_height="1dp"
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="蓝变："/>
+                            android:text="蓝变："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_blue_stain"
@@ -827,20 +806,20 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#e5e5e5"/>
+                        android:layout_height="1dp"
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="环裂："/>
+                            android:text="环裂："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_ring_shake"
@@ -851,20 +830,20 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#e5e5e5"/>
+                        android:layout_height="1dp"
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="节巴："/>
+                            android:text="节巴："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_stammer"
@@ -875,20 +854,20 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#e5e5e5"/>
+                        android:layout_height="1dp"
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="黑心："/>
+                            android:text="黑心："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_black_heart"
@@ -899,20 +878,20 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#e5e5e5"/>
+                        android:layout_height="1dp"
+                        android:background="#f5f5f5"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_margin="10dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="产地："/>
+                            android:text="产地："
+                            android:textSize="15dp"/>
 
                         <TextView
                             android:id="@+id/tv_producing_area"
@@ -923,8 +902,8 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#e5e5e5"/>
+                        android:layout_height="1dp"
+                        android:background="#f5f5f5"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -936,6 +915,7 @@
         </com.jywy.woodpersons.commons.PercentLinearLayout>
 
     </ScrollView>
+
 
     <com.jywy.woodpersons.commons.PercentLinearLayout
         android:layout_width="match_parent"
@@ -961,7 +941,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.78"
-            android:drawableTop="@drawable/show_bottom_phone"
+            android:drawableTop="@drawable/ic_phone_show"
             android:gravity="center"
             android:text="15148469997"
             android:textColor="#fff"

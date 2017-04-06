@@ -14,11 +14,9 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -30,22 +28,16 @@ import com.jywy.woodpersons.base.BaseActivity;
 import com.jywy.woodpersons.base.ProgressDialogFragment;
 import com.jywy.woodpersons.base.wrapper.ToolbarWrapper;
 import com.jywy.woodpersons.commons.ActivityUtils;
-import com.jywy.woodpersons.commons.AvatarLoadOptions;
-import com.jywy.woodpersons.network.UserPrefs;
 import com.jywy.woodpersons.network.WoodPersonsClient;
 import com.jywy.woodpersons.network.entity.RailwayGoodsInfo;
 import com.jywy.woodpersons.network.entity.RailwayGoodsInfoRsp;
 import com.jywy.woodpersons.network.entity.RailwayProductAgentBean;
-import com.jywy.woodpersons.network.entity.RailwayProductPic;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import me.relex.circleindicator.CircleIndicator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -55,15 +47,9 @@ import static android.Manifest.permission.CALL_PHONE;
 
 public class RailwayGoodsInfoActivity extends BaseActivity {
 
-    @BindView(R.id.viewpager_info) //时间
-            ViewPager viewpager_info;
-    @BindView(R.id.indicator) //时间
-            CircleIndicator indicator;
     @BindView(R.id.tv_time) //时间
             TextView tvTime;
 
-    @BindView(R.id.bottom_phone)//联系人
-            TextView btnPhone;
     @BindView(R.id.list_info_guige)//规格
             ListView listViewInfo;
     @BindView(R.id.tv_info_train_number)//车皮号
@@ -82,10 +68,6 @@ public class RailwayGoodsInfoActivity extends BaseActivity {
             TextView tvCompany;
     @BindView(R.id.layout_company)//公司按钮
             RelativeLayout btnCompany;
-    @BindView(R.id.open_or_close)//打开还是关闭（代理公司部分）
-            ImageView img_ooc;
-    @BindView(R.id.pull_or_down)//打开还是关闭（详情部分）
-            ImageView img_pull_down;
     @BindView(R.id.layout_phone_number)
     LinearLayout layoutPhoneNumber;
 
@@ -101,9 +83,6 @@ public class RailwayGoodsInfoActivity extends BaseActivity {
     @BindView(R.id.layout_info)
     LinearLayout layoutInfo;
 
-    @BindView(R.id.layout_sanhuo)
-    LinearLayout layout_sanhuo;
-
     //
     private Call<RailwayGoodsInfoRsp> call;
     private ActivityUtils activityUtils;
@@ -114,12 +93,6 @@ public class RailwayGoodsInfoActivity extends BaseActivity {
     private static final String CD_KEY = "CD_KEY";
     private String currentPhone;
     private static final int CALL_PHONE_REQUEST = 1;
-    private String contactPhone;
-    private ArrayList<ImageView> picList;
-    private ArrayList<String> picUrlSmall;
-    private ArrayList<String> picUrlBig;
-    private RailwayGoodsPictureAdapter pictureAdapter;
-    private List<RailwayProductPic> productPic;
 
     // 因为需要传递数据，为了规范我们传递的数据内容，所以我们在此页面对外提供一个跳转的方法
     public static Intent getStartIntent(Context context, String cdkey) {
@@ -142,8 +115,6 @@ public class RailwayGoodsInfoActivity extends BaseActivity {
             if (msg.what == 1) {
                 railwayGoodsInfo = (RailwayGoodsInfo) msg.obj;
                 setTextToTextView();
-                productPic = railwayGoodsInfo.getProductPic();
-                viewPagerData();
             }
         }
     };
@@ -160,17 +131,13 @@ public class RailwayGoodsInfoActivity extends BaseActivity {
         String cdKey = getIntent().getStringExtra(CD_KEY);
 
         getGoodsInfo(cdKey);
-
-
         btnCompany.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (layoutPhoneNumber.getVisibility() == View.VISIBLE) {
                     layoutPhoneNumber.setVisibility(View.GONE);
-                    img_ooc.setImageResource(R.drawable.info_open);
                 } else {
                     layoutPhoneNumber.setVisibility(View.VISIBLE);
-                    img_ooc.setImageResource(R.drawable.info_close);
                 }
             }
         });
@@ -181,61 +148,14 @@ public class RailwayGoodsInfoActivity extends BaseActivity {
             public void onClick(View v) {
                 if (layoutInfo.getVisibility() == View.VISIBLE) {
                     layoutInfo.setVisibility(View.GONE);
-                    img_pull_down.setImageResource(R.drawable.info_open);
                 } else {
                     layoutInfo.setVisibility(View.VISIBLE);
-                    img_pull_down.setImageResource(R.drawable.info_close);
+
                 }
             }
         });
 
         initDrawable();
-    }
-
-    private void viewPagerData() {
-        picList = new ArrayList<>();
-        picUrlSmall = new ArrayList<>();
-        picUrlBig = new ArrayList<>();
-        if (productPic.size() <= 0) {
-            ImageView imageView = new ImageView(this);
-            imageView.setImageResource(R.drawable.ic_default_info);
-            picList.add(imageView);
-            pictureAdapter = new RailwayGoodsPictureAdapter(picList);
-            viewpager_info.setAdapter(pictureAdapter);
-        } else {
-            pictureAdapter = new RailwayGoodsPictureAdapter(picList);
-            viewpager_info.setAdapter(pictureAdapter);
-            indicator.setViewPager(viewpager_info);
-        }
-
-        pictureAdapter.setListener(new RailwayGoodsPictureAdapter.OnItemClickListener() {
-            @Override
-            public void onItemListener() {
-                Intent intent = RailwayGoodsInfoPictureActivity.getStartIntent(RailwayGoodsInfoActivity.this, picUrlBig);
-                startActivity(intent);
-            }
-        });
-
-        for (int i = 0; i < picUrlSmall.size(); i++) {
-            String thumbPics = productPic.get(i).getThumbPics();
-            String pictureUrlBig = productPic.get(i).getPictureUrlBig();
-            picUrlBig.add(pictureUrlBig);
-            picUrlSmall.add(thumbPics);
-
-        }
-        setImageData();
-    }
-
-    private void setImageData() {
-        for (int i = 0; i < picUrlSmall.size(); i++) {
-            ImageView imageView = new ImageView(this);
-            ImageLoader.getInstance()
-                    .displayImage(WoodPersonsClient.BASE_IMG + picUrlSmall.get(i),
-                            imageView, AvatarLoadOptions.build_item());
-            picList.add(imageView);
-
-        }
-        pictureAdapter.notifyDataSetChanged();
     }
 
     private void initDrawable() {
@@ -258,7 +178,7 @@ public class RailwayGoodsInfoActivity extends BaseActivity {
 
     private void getGoodsInfo(String cdKey) {
         showPrb();
-        call = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayGoodsInfo(cdKey, UserPrefs.getInstance().getUserid());
+        call = WoodPersonsClient.getInstance().getWoodPersonsApi().getRailwayGoodsInfo(cdKey, 8);
         call.enqueue(new Callback<RailwayGoodsInfoRsp>() {
             @Override
             public void onResponse(Call<RailwayGoodsInfoRsp> call, Response<RailwayGoodsInfoRsp> response) {
@@ -270,6 +190,7 @@ public class RailwayGoodsInfoActivity extends BaseActivity {
                     message.what = 1;
                     message.obj = goodsInf;
                     handler.sendMessage(message);
+
                 }
             }
 
@@ -289,22 +210,13 @@ public class RailwayGoodsInfoActivity extends BaseActivity {
         listViewInfo.setAdapter(railwayGoodsInfoAdapter);
         railwayGoodsInfoAdapter.reset(railwayGoodsInfo.getProductSpec());
 
-        String goodType = railwayGoodsInfo.getProductInfo().getGoodType();
-        if (goodType.equals("2")) {
-            layout_sanhuo.setVisibility(View.GONE);
-        }
         tvRailwayNumber.setText(railwayGoodsInfo.getProductInfo().getCarNum());
         tvRailwayType.setText(railwayGoodsInfo.getProductInfo().getTrainType());
-
-
         tvTargetPort.setText(railwayGoodsInfo.getProductInfo().getPortName());
         tvCurrentPosition.setText(railwayGoodsInfo.getProductInfo().getSpotPosition());
         tvUpdateTime.setText(railwayGoodsInfo.getProductInfo().getUpdateTime());
         tvTime.setText(railwayGoodsInfo.getProductInfo().getSalechgedTime());
         tvCompany.setText(railwayGoodsInfo.getProductInfo().getAgentName());
-        contactPhone = railwayGoodsInfo.getProductInfo().getContactPhone();
-        btnPhone.setText(contactPhone);
-
 
         if (railwayGoodsInfo.getProductAgent() != null) {
             List<RailwayProductAgentBean> agentBean = railwayGoodsInfo.getProductAgent().getAgentBean();
@@ -333,15 +245,6 @@ public class RailwayGoodsInfoActivity extends BaseActivity {
                 ls_zuoji.setAdapter(mAdapter);
             }
         }
-
-
-    }
-
-    //联系人电话
-    @OnClick(R.id.bottom_phone)
-    public void callphonecontact() {
-        currentPhone = contactPhone;
-        testCall();
     }
 
 
