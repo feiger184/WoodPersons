@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jywy.woodpersons.commons.PercentLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F2F2"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#33C147"
+        android:gravity="center"
+        android:text="用户登录"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        app:layout_heightPercent="9%"/>
+    <!--图标-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="20%">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/egrt"/>
+    </RelativeLayout>
+    <!--输入框-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffff"
+        android:orientation="vertical"
+        android:weightSum="2"
+        app:layout_heightPercent="18%">
+
+
+        <EditText
+            android:id="@+id/et_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableLeft="@drawable/ic_phone_login"
+            android:drawablePadding="10dp"
+            android:hint="请输入手机号码"
+            android:inputType="phone"
+            android:paddingLeft="10dp"
+            android:textColorHint="#C4C4C4"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F6F6F6"/>
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableLeft="@drawable/ic_password_login"
+            android:drawablePadding="10dp"
+            android:hint="请输入密码"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+            android:textColorHint="#C4C4C4"/>
+    </LinearLayout>
+    <!--登录按钮-->
+    <Button
+        android:id="@+id/btn_loginIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#9edda8"
+        android:gravity="center"
+        android:text="Login~~~"
+        android:textSize="@dimen/font_20"
+        android:textColor="#fff"
+        app:layout_heightPercent="8%"
+        app:layout_marginLeftPercent="5%"
+        app:layout_marginTopPercent="5%"
+        app:layout_widthPercent="90%"/>
+
+    <!--第三方登录-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        app:layout_heightPercent="5%"
+        app:layout_marginLeftPercent="8%"
+        app:layout_marginTopPercent="8%"
+        app:layout_widthPercent="84%">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="#9E9E9E"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="第三方账号登录"
+            android:textColor="#9E9E9E"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="#9E9E9E"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="20%">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/nzh"
+            android:gravity="center"
+            android:text="微信登录"/>
+    </RelativeLayout>
+</com.jywy.woodpersons.commons.PercentLinearLayout>

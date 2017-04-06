@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jywy.woodpersons.commons.PercentLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_register"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F2F2"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#33C147"
+        android:gravity="center"
+        android:text="注册"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        app:layout_heightPercent="9%"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical"
+        android:weightSum="3"
+        app:layout_heightPercent="22%"
+        app:layout_widthPercent="100%">
+
+        <!--一-->
+        <EditText
+            android:id="@+id/et_register_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableLeft="@drawable/ic_phone_login"
+           android:drawablePadding="10dp"
+            android:hint="请输入手机号码"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10dp"
+            android:textSize="15sp"
+            android:inputType="phone"
+            android:textColorHint="#C1C1C1"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#F3F3F3"/>
+        <!--二-->
+        <com.jywy.woodpersons.commons.PercentLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/et_register_invalicode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:drawableLeft="@drawable/ic_password_login"
+                android:drawablePadding="10dp"
+                android:hint="请输入验证码"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"
+                android:textSize="15sp"
+                android:textColorHint="#C1C1C1"
+                app:layout_widthPercent="70%"/>
+
+            <ImageView
+                android:id="@+id/img_yanzheng"
+                android:layout_width="340dp"
+                android:layout_height="match_parent"
+                android:background="#DFDFDF"
+                android:layout_margin="5dp"
+                app:layout_widthPercent="25%"/>
+        </com.jywy.woodpersons.commons.PercentLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#F3F3F3"/>
+        <!--三-->
+        <com.jywy.woodpersons.commons.PercentLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_register_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:drawableLeft="@drawable/ic_password_login"
+                android:drawablePadding="10dp"
+                android:hint="请输入验证码"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"
+                android:textSize="15sp"
+                android:textColorHint="#C1C1C1"
+                app:layout_widthPercent="70%"/>
+
+            <Button
+                android:id="@+id/btn_send_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="发送验证码"
+                android:layout_marginLeft="1dp"
+                android:textColor="#151515"
+                app:layout_widthPercent="27%"/>
+        </com.jywy.woodpersons.commons.PercentLinearLayout>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_registerButton"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:enabled="false"
+        android:gravity="center"
+        android:text="立即注册"
+        android:textSize="18sp"
+        android:textColor="#fff"
+        android:background="@drawable/shape_login"
+        app:layout_heightPercent="8%"
+        app:layout_marginLeftPercent="5%"
+        app:layout_marginTopPercent="4%"
+        app:layout_widthPercent="90%"/>
+</com.jywy.woodpersons.commons.PercentLinearLayout>
